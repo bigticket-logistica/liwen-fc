@@ -259,6 +259,14 @@ main{max-width:1200px;margin:0 auto;padding:1.25rem;position:relative;z-index:1;
 .campo-svg { touch-action: none; }
 #campoPrincipal g[id^="pos-"] { cursor: grab; }
 #campoPrincipal g[id^="pos-"]:active { cursor: grabbing; }
+
+/* DATE DISPLAY */
+#fechaDisplay { font-family: 'Barlow Condensed', sans-serif; letter-spacing: 0.5px; }
+/* NUEVO PARTIDO MODAL */
+.nuevo-partido-modal { text-align: center; }
+.nuevo-partido-modal .warning-icon { font-size: 3rem; margin-bottom: .75rem; }
+.nuevo-partido-modal p { font-size: .88rem; color: var(--texto-muted); line-height: 1.6; margin-bottom: .5rem; }
+.nuevo-partido-modal strong { color: var(--blanco); }
 </style>
 </head>
 <body>
@@ -369,11 +377,18 @@ main{max-width:1200px;margin:0 auto;padding:1.25rem;position:relative;z-index:1;
       </div>
     </div>
     <div class="admin-grid-3">
-      <div class="form-group"><label>Fecha</label><input type="date" id="inputFecha"></div>
+      <div class="form-group">
+          <label>Fecha</label>
+          <input type="date" id="inputFecha" onclick="this.showPicker&&this.showPicker()" style="cursor:pointer;" onchange="updateDateDisplay()">
+          <div id="fechaDisplay" style="font-size:.75rem;color:var(--verde);margin-top:3px;height:14px;"></div>
+        </div>
       <div class="form-group"><label>Hora</label><input type="time" id="inputHora"></div>
       <div class="form-group"><label>Lugar</label><input type="text" id="inputLugar" placeholder="Cancha / Estadio"></div>
     </div>
-    <button class="btn btn-primary" style="width:100%;margin-top:12px;" onclick="guardarPartido()">&#128190; Guardar Partido</button>
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:8px;margin-top:12px;">
+      <button class="btn btn-secondary" onclick="confirmarNuevoPartido()" title="Crear partido nuevo (resetea todo)">&#43; Nuevo</button>
+      <button class="btn btn-primary" onclick="guardarPartido()">&#128190; Guardar Partido</button>
+    </div>
 
     <!-- CANCELAR PARTIDO -->
     <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--gris-border);">
@@ -637,6 +652,25 @@ main{max-width:1200px;margin:0 auto;padding:1.25rem;position:relative;z-index:1;
     </div>
   </div>
 </div>
+
+<!-- MODAL NUEVO PARTIDO -->
+<div class="modal-overlay" id="nuevoPartidoModal">
+  <div class="modal nuevo-partido-modal">
+    <div class="warning-icon">&#9888;&#65039;</div>
+    <div class="modal-title" style="color:var(--amarillo);">Nuevo Partido</div>
+    <p>Esto <strong>borrara el partido actual</strong> y todo lo asociado:</p>
+    <p>&#10060; Lista de jugadores y reservas<br>&#10060; Deudores del partido actual<br>&#10060; Votos MVP<br>&#10060; Pagos</p>
+    <p style="color:var(--verde);">&#9989; El historial y los niveles se conservan</p>
+    <div style="background:rgba(255,214,0,.08);border:1px solid rgba(255,214,0,.25);border-radius:8px;padding:10px;margin-top:10px;">
+      <div class="form-group"><label>Escribe <strong style="color:var(--amarillo);">NUEVO</strong> para confirmar</label>
+      <input type="text" id="nuevoConfirmInput" placeholder="NUEVO" maxlength="10" style="text-transform:uppercase;"></div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal('nuevoPartidoModal');document.getElementById('nuevoConfirmInput').value='';">Cancelar</button>
+      <button class="btn btn-primary" onclick="ejecutarNuevoPartido()">&#43; Crear Partido Nuevo</button>
+    </div>
+  </div>
+</div>
 <div class="toast" id="toast"></div>
 
 <script>
@@ -666,6 +700,55 @@ function partidoId(){return state.partido.fecha+'_'+state.partido.hora;}
 // ============================================================
 // INIT
 // ============================================================
+
+// ── NUEVO PARTIDO ──
+function confirmarNuevoPartido(){
+  document.getElementById('nuevoConfirmInput').value='';
+  openModal('nuevoPartidoModal');
+  setTimeout(()=>document.getElementById('nuevoConfirmInput').focus(), 150);
+}
+
+function ejecutarNuevoPartido(){
+  const val=document.getElementById('nuevoConfirmInput').value.trim().toUpperCase();
+  if(val!=='NUEVO'){showToast('Escribe NUEVO para confirmar',true);return;}
+  closeModal('nuevoPartidoModal');
+  document.getElementById('nuevoConfirmInput').value='';
+  // Reset todo excepto historial y niveles
+  const historialSaved=[...state.historial];
+  const nivelesSaved={...state.niveles};
+  const sheetsSaved=state.sheetsUrl;
+  state={...DEFAULT_STATE};
+  state.historial=historialSaved;
+  state.niveles=nivelesSaved;
+  state.sheetsUrl=sheetsSaved;
+  // Reset campo SVG drag state
+  const svg=document.getElementById('campoPrincipal');
+  if(svg) svg.dataset.ddReady='0';
+  // Reset admin form fields
+  document.getElementById('inputFecha').value='';
+  document.getElementById('inputHora').value='';
+  document.getElementById('inputLugar').value='';
+  document.getElementById('inputRivalNombre').value='';
+  document.getElementById('fechaDisplay').textContent='';
+  document.getElementById('tipoInterno').classList.remove('selected');
+  document.getElementById('tipoExterno').classList.remove('selected');
+  document.getElementById('rivalNameGroup').style.display='none';
+  saveState();
+  renderAll();
+  startCountdown();
+  syncSheets(true);
+  showToast('&#127381; Nuevo partido creado — todo listo!');
+}
+
+// ── DATE DISPLAY ──
+function updateDateDisplay(){
+  const val=document.getElementById('inputFecha').value;
+  const display=document.getElementById('fechaDisplay');
+  if(!val||!display){return;}
+  const d=new Date(val+'T12:00:00');
+  display.textContent=d.toLocaleDateString('es-CL',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+}
+
 function init(){
   // Load from localStorage first (instant render)
   try{
@@ -867,6 +950,7 @@ function renderPartidoBanner(){
     document.getElementById('inputLugar').value=lugar||'';
     document.getElementById('inputRivalNombre').value=rivalNombre||'';
     seleccionarTipo(tipo);
+    updateDateDisplay();
     document.getElementById('inputMotivoCancelacion').value=motivoCancelacion||'';
     const br=document.getElementById('btnReactivar');
     if(br)br.style.display=cancelado?'block':'none';
