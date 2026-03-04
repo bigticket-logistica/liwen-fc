@@ -1632,7 +1632,7 @@ async function testConnection(){
   try{const r=await fetch(state.sheetsUrl+'?action=ping');const d=await r.json();if(d.status==='ok'){showToast('Conexion exitosa');updateSheetsStatus();}else showToast('Respuesta inesperada',true);}
   catch(e){showToast('Error de conexion',true);}
 }
-async async function syncSheets(silent=false){
+async function syncSheets(silent=false){
   const url=state.sheetsUrl||SHEETS_URL;
   if(!url){if(!silent)showToast('Configura Google Sheets primero',true);return;}
   document.getElementById('syncBtn').classList.add('syncing');
