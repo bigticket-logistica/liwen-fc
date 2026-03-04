@@ -91,9 +91,9 @@ main{max-width:1200px;margin:0 auto;padding:1.25rem;position:relative;z-index:1;
 /* JUGADORES */
 .jugadores-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;}
 .counter-badge{background:var(--verde-dark);color:var(--verde);padding:4px 12px;border-radius:20px;font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:700;letter-spacing:1px;}
-.jugador-row{display:grid;grid-template-columns:28px 1fr 110px 1fr auto;gap:8px;align-items:center;padding:7px 0;border-bottom:1px solid var(--gris-border);animation:slideIn .25s ease;}
+.jugador-row{display:grid;grid-template-columns:28px 1fr 1fr auto;gap:8px;align-items:center;padding:7px 0;border-bottom:1px solid var(--gris-border);animation:slideIn .25s ease;}
 @keyframes slideIn{from{opacity:0;transform:translateX(-8px);}to{opacity:1;transform:translateX(0);}}
-@media(max-width:680px){.jugador-row{grid-template-columns:1fr 90px auto;}.jugador-num,.jugador-obs{display:none;}}
+@media(max-width:680px){.jugador-row{grid-template-columns:1fr 1fr auto;}.jugador-num{display:none;}}
 .jugador-num{font-family:'Bebas Neue',sans-serif;font-size:.95rem;color:var(--texto-muted);text-align:center;}
 .jugador-name{font-weight:600;color:var(--blanco);font-size:.92rem;}
 .jugador-rut{font-size:.82rem;color:var(--texto-muted);font-family:'Barlow Condensed',sans-serif;}
@@ -254,6 +254,11 @@ main{max-width:1200px;margin:0 auto;padding:1.25rem;position:relative;z-index:1;
 .bench-player.bench-next .bench-num{color:var(--amarillo);}
 .bench-name{font-size:.72rem;color:var(--blanco);font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .row-ascendido{background:rgba(255,214,0,.04);}
+
+/* DRAG & DROP CANCHA */
+.campo-svg { touch-action: none; }
+#campoPrincipal g[id^="pos-"] { cursor: grab; }
+#campoPrincipal g[id^="pos-"]:active { cursor: grabbing; }
 </style>
 </head>
 <body>
@@ -394,7 +399,6 @@ main{max-width:1200px;margin:0 auto;padding:1.25rem;position:relative;z-index:1;
     <div class="jugador-row" style="border-bottom:2px solid var(--gris-border);padding-bottom:5px;">
       <div class="jugador-num" style="font-size:.65rem;text-transform:uppercase;color:var(--texto-muted);">#</div>
       <div style="font-size:.65rem;text-transform:uppercase;color:var(--texto-muted);">Nombre</div>
-      <div style="font-size:.65rem;text-transform:uppercase;color:var(--texto-muted);">RUT</div>
       <div style="font-size:.65rem;text-transform:uppercase;color:var(--texto-muted);">Obs</div>
       <div></div>
     </div>
@@ -423,7 +427,6 @@ main{max-width:1200px;margin:0 auto;padding:1.25rem;position:relative;z-index:1;
     <div class="reserva-row" style="border-bottom:2px solid var(--gris-border);padding-bottom:5px;">
       <div class="reserva-num" style="font-size:.65rem;text-transform:uppercase;color:var(--texto-muted);">#</div>
       <div style="font-size:.65rem;text-transform:uppercase;color:var(--texto-muted);">Nombre</div>
-      <div style="font-size:.65rem;text-transform:uppercase;color:var(--texto-muted);">RUT</div>
       <div style="font-size:.65rem;text-transform:uppercase;color:var(--texto-muted);">Obs</div>
       <div></div>
     </div>
@@ -441,10 +444,13 @@ main{max-width:1200px;margin:0 auto;padding:1.25rem;position:relative;z-index:1;
 <!-- TAB CANCHA -->
 <div class="tab-content" id="tab-cancha">
   <div class="card">
-    <div class="card-title">&#127967; Visualizacion 4-4-2</div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+      <div class="card-title" style="margin-bottom:0">&#127967; Visualizacion 4-4-2</div>
+      <button class="btn btn-secondary btn-small" id="btnResetPos" onclick="resetPosiciones()" title="Restaurar posiciones por defecto" style="display:none;">&#8635; Reset</button>
+    </div>
     <div class="cancha-with-bench">
     <div class="campo-wrapper">
-      <svg class="campo-svg" viewBox="0 0 300 480" xmlns="http://www.w3.org/2000/svg">
+      <svg class="campo-svg" id="campoPrincipal" viewBox="0 0 300 480" xmlns="http://www.w3.org/2000/svg">
         <rect width="300" height="480" rx="4" fill="#1a3a1e"/>
         <rect x="15" y="15" width="270" height="450" rx="2" fill="none" stroke="#2d6b35" stroke-width="2"/>
         <line x1="15" y1="240" x2="285" y2="240" stroke="#2d6b35" stroke-width="1.5"/>
@@ -491,6 +497,7 @@ main{max-width:1200px;margin:0 auto;padding:1.25rem;position:relative;z-index:1;
     </div>
     </div><!-- end cancha-with-bench -->
     <p style="text-align:center;font-size:.72rem;color:var(--texto-muted);margin-top:6px;">Verde = LIWEN FC &middot; Rojo = <span id="canchaRivalName">Rival</span></p>
+    <p id="dragHint" style="text-align:center;font-size:.68rem;color:var(--texto-muted);margin-top:3px;display:none;">&#9995; Arrastra un jugador a otra posicion para intercambiarlos</p>
   </div>
 </div>
 
@@ -640,7 +647,8 @@ const DEFAULT_STATE={
   partido:{tipo:'',rivalNombre:'',fecha:'',hora:'',lugar:'',cancelado:false,motivoCancelacion:''},
   jugadores:[],reservas:[],eliminadosTarde:[],
   resultado:{local:'',visita:''},pagos:{},
-  votos:{},votantes:{}, // votantes: {rut: partidoId}
+  votos:{},votantes:{},
+  posiciones:{}, // votantes: {rut: partidoId}
   niveles:{},           // {jugadorNombre: 0-100}
   historial:[],         // array de partidos archivados
   sheetsUrl:SHEETS_URL
@@ -893,7 +901,6 @@ function renderJugadores(){
           ${esc(j.nombre)}
           ${j.ascendidoDeReserva?'<span class="ascendido-tag">&#11014; reserva</span>':''}
         </div>
-        <div class="jugador-rut">${esc(j.rut||'—')}</div>
         <div class="jugador-obs">${esc(j.obs||'')}</div>
         <button class="btn btn-danger btn-small" onclick="solicitarEliminar('jugador',${j.id})">&#10005;</button>
       </div>`).join('');
@@ -902,7 +909,6 @@ function renderJugadores(){
   document.getElementById('addJugadorForm').style.display=llena?'none':'grid';
   document.getElementById('listaLlenaMsg').style.display=llena?'block':'none';
   document.getElementById('jugadoresCounter').textContent=state.jugadores.length+'/'+max;
-  // also update reservas panel
   renderReservas();
 }
 
@@ -970,16 +976,47 @@ function renderDeudores(){
 // ============================================================
 function renderCancha(){
   const lbl=['POR','DEF','DEF','DEF','DEF','MED','MED','MED','MED','DEL','DEL'];
-  // Fill main field positions (0-10 LIWEN, 11-21 rival/team2)
+  // Build per-position assignment from state.posiciones (overrides)
+  // state.posiciones = {posIdx: jugadorIdx} for LIWEN side (0-10)
+  if(!state.posiciones) state.posiciones={};
+
+  // Build display array for LIWEN (11 slots)
+  // Default order: jugadores[0..10] unless overridden by posiciones
+  const liwen = Array(11).fill(null);
+  // Apply saved assignments
+  const usados=new Set();
+  Object.entries(state.posiciones).forEach(([pos,jugIdx])=>{
+    const p=parseInt(pos), jIdx=parseInt(jugIdx);
+    if(state.jugadores[jIdx]) { liwen[p]=state.jugadores[jIdx]; usados.add(jIdx); }
+  });
+  // Fill empty slots with remaining jugadores in order
+  let nextJug=0;
+  for(let p=0;p<11;p++){
+    if(!liwen[p]){
+      while(nextJug<state.jugadores.length && usados.has(nextJug)) nextJug++;
+      if(nextJug<state.jugadores.length){ liwen[p]=state.jugadores[nextJug]; usados.add(nextJug); nextJug++; }
+    }
+  }
+
   for(let i=0;i<22;i++){
     const el=document.getElementById('pos-'+i);
     const ne=document.getElementById('posname-'+i);
     const se=document.getElementById('possub-'+i);
     if(!el||!ne) continue;
     if(i<11){
-      const j=state.jugadores[i];
-      if(j){const p=j.nombre.split(' ');ne.textContent=p[0].substring(0,7);se.textContent=p.length>1?p[p.length-1].substring(0,7):'';el.style.opacity='1';}
-      else{ne.textContent=lbl[i];se.textContent='';el.style.opacity='0.2';}
+      const j=liwen[i];
+      if(j){
+        const p=j.nombre.split(' ');
+        ne.textContent=p[0].substring(0,7);
+        se.textContent=p.length>1?p[p.length-1].substring(0,7):'';
+        el.style.opacity='1';
+        el.setAttribute('data-pos',i);
+        el.setAttribute('data-has-player','1');
+      } else {
+        ne.textContent=lbl[i]; se.textContent=''; el.style.opacity='0.2';
+        el.setAttribute('data-has-player','0');
+      }
+      el.setAttribute('data-pos',i);
     } else {
       const k=i-11;
       const j2=state.partido.tipo==='interno'?state.jugadores[11+k]:null;
@@ -987,18 +1024,163 @@ function renderCancha(){
       else{ne.textContent=lbl[k];se.textContent='';el.style.opacity='0.15';}
     }
   }
-  // Bench sidebar
+
+  // Bench
   const bench=document.getElementById('benchList');
-  if(!bench) return;
-  if(state.reservas.length===0){
-    bench.innerHTML='<div style="font-size:.72rem;color:var(--texto-muted);text-align:center;padding:8px 0;">Sin reservas</div>';
-    return;
+  if(bench){
+    if(state.reservas.length===0){
+      bench.innerHTML='<div style="font-size:.72rem;color:var(--texto-muted);text-align:center;padding:8px 0;">Sin reservas</div>';
+    } else {
+      bench.innerHTML=state.reservas.map((r,i)=>`
+        <div class="bench-player ${i===0?'bench-next':''}">
+          <div class="bench-num">${i===0?'&#11014;':'R'+(i+1)}</div>
+          <div class="bench-name">${esc(r.nombre.split(' ')[0])}</div>
+        </div>`).join('');
+    }
   }
-  bench.innerHTML=state.reservas.map((r,i)=>`
-    <div class="bench-player ${i===0?'bench-next':''}">
-      <div class="bench-num">${i===0?'&#11014;':'R'+(i+1)}</div>
-      <div class="bench-name">${esc(r.nombre.split(' ')[0])}</div>
-    </div>`).join('');
+
+  // Setup drag & drop on LIWEN circles (only if not already set up)
+  setupCanchaDragDrop();
+  // Show drag controls only for admin
+  const resetBtn=document.getElementById('btnResetPos');
+  if(resetBtn) resetBtn.style.display=isAdmin?'inline-block':'none';
+  const dragHint=document.getElementById('dragHint');
+  if(dragHint) dragHint.style.display=isAdmin?'block':'none';
+}
+
+function setupCanchaDragDrop(){
+  // Use pointer events for both mouse and touch
+  const svg=document.getElementById('campoPrincipal');
+  if(!svg||svg.dataset.ddReady==='1') return;
+  svg.dataset.ddReady='1';
+
+  let dragging=null, dragFrom=null, ghostEl=null;
+
+  for(let i=0;i<11;i++){
+    const g=document.getElementById('pos-'+i);
+    if(!g) continue;
+    g.style.cursor=isAdmin?'grab':'default';
+
+    g.addEventListener('pointerdown', e=>{
+      if(!isAdmin) return;
+      if(g.getAttribute('data-has-player')!=='1') return;
+      e.preventDefault();
+      dragging=g;
+      dragFrom=parseInt(g.getAttribute('data-pos'));
+      g.style.opacity='0.4';
+      g.style.cursor='grabbing';
+      // Create ghost label
+      ghostEl=document.createElementNS('http://www.w3.org/2000/svg','text');
+      ghostEl.setAttribute('font-size','7');
+      ghostEl.setAttribute('fill','#FFD600');
+      ghostEl.setAttribute('font-family','Barlow,sans-serif');
+      ghostEl.setAttribute('font-weight','700');
+      ghostEl.setAttribute('pointer-events','none');
+      ghostEl.textContent=document.getElementById('posname-'+dragFrom).textContent;
+      svg.appendChild(ghostEl);
+      svg.setPointerCapture(e.pointerId);
+    });
+  }
+
+  svg.addEventListener('pointermove', e=>{
+    if(!dragging||!ghostEl) return;
+    const pt=svgPoint(svg,e);
+    ghostEl.setAttribute('x', pt.x+4);
+    ghostEl.setAttribute('y', pt.y-4);
+    // Highlight hovered target
+    for(let i=0;i<11;i++){
+      const g=document.getElementById('pos-'+i);
+      if(!g) continue;
+      const circle=g.querySelector('circle');
+      if(!circle) continue;
+      const cx=parseFloat(circle.getAttribute('cx'));
+      const cy=parseFloat(circle.getAttribute('cy'));
+      const dist=Math.sqrt(Math.pow(pt.x-cx,2)+Math.pow(pt.y-cy,2));
+      if(dist<22 && i!==dragFrom){ circle.setAttribute('stroke','#FFD600'); circle.setAttribute('stroke-width','3'); }
+      else if(i!==dragFrom){ circle.setAttribute('stroke','#00C853'); circle.setAttribute('stroke-width','2'); }
+    }
+  });
+
+  svg.addEventListener('pointerup', e=>{
+    if(!dragging) return;
+    const pt=svgPoint(svg,e);
+    let target=-1;
+    for(let i=0;i<11;i++){
+      if(i===dragFrom) continue;
+      const g=document.getElementById('pos-'+i);
+      if(!g) continue;
+      const circle=g.querySelector('circle');
+      if(!circle) continue;
+      const cx=parseFloat(circle.getAttribute('cx'));
+      const cy=parseFloat(circle.getAttribute('cy'));
+      const dist=Math.sqrt(Math.pow(pt.x-cx,2)+Math.pow(pt.y-cy,2));
+      if(dist<24){ target=i; break; }
+    }
+
+    // Reset highlights
+    for(let i=0;i<11;i++){
+      const g=document.getElementById('pos-'+i);
+      if(!g) continue;
+      const circle=g.querySelector('circle');
+      if(circle){ circle.setAttribute('stroke','#00C853'); circle.setAttribute('stroke-width','2'); }
+      g.style.opacity=g.getAttribute('data-has-player')==='1'?'1':'0.2';
+      g.style.cursor='grab';
+    }
+    if(ghostEl){ svg.removeChild(ghostEl); ghostEl=null; }
+    dragging=null;
+
+    if(target>=0 && target!==dragFrom){
+      swapPosiciones(dragFrom, target);
+    }
+  });
+}
+
+function svgPoint(svg, e){
+  const rect=svg.getBoundingClientRect();
+  const vb=svg.viewBox.baseVal;
+  const scaleX=vb.width/rect.width;
+  const scaleY=vb.height/rect.height;
+  return { x:(e.clientX-rect.left)*scaleX, y:(e.clientY-rect.top)*scaleY };
+}
+
+function resetPosiciones(){
+  state.posiciones={};
+  const svg=document.getElementById('campoPrincipal');
+  if(svg) svg.dataset.ddReady='0';
+  saveState(); renderCancha();
+  showToast('Posiciones restauradas');
+}
+
+function swapPosiciones(fromPos, toPos){
+  if(!state.posiciones) state.posiciones={};
+  // Build current liwen array
+  const liwen=Array(11).fill(null);
+  const usados=new Set();
+  Object.entries(state.posiciones).forEach(([pos,jugIdx])=>{
+    const p=parseInt(pos),jIdx=parseInt(jugIdx);
+    if(state.jugadores[jIdx]){liwen[p]=jIdx;usados.add(jIdx);}
+  });
+  let nextJug=0;
+  for(let p=0;p<11;p++){
+    if(liwen[p]===null&&liwen[p]!==0){
+      while(nextJug<state.jugadores.length&&usados.has(nextJug))nextJug++;
+      if(nextJug<state.jugadores.length){liwen[p]=nextJug;usados.add(nextJug);nextJug++;}
+      else liwen[p]=-1;
+    }
+  }
+  // Swap
+  const tmp=liwen[fromPos];
+  liwen[fromPos]=liwen[toPos];
+  liwen[toPos]=tmp;
+  // Save back
+  state.posiciones={};
+  liwen.forEach((jugIdx,pos)=>{if(jugIdx!==null&&jugIdx>=0)state.posiciones[pos]=jugIdx;});
+  saveState();
+  // Reset dd flag so it re-initializes
+  const svg=document.getElementById('campoPrincipal');
+  if(svg) svg.dataset.ddReady='0';
+  renderCancha();
+  showToast('Posicion actualizada');
 }
 
 // ============================================================
