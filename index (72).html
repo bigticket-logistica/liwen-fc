@@ -458,7 +458,7 @@ main{max-width:1100px;margin:0 auto;padding:1.5rem;position:relative;z-index:1;}
 <div class="toast" id="toast"></div>
 
 <script>
-const DEFAULT_STATE={partido:{tipo:'',rivalNombre:'',fecha:'',hora:'',lugar:''},jugadores:[],reservas:[],eliminadosTarde:[],resultado:{local:'',visita:''},pagos:{},sheetsUrl:''};
+const DEFAULT_STATE={partido:{tipo:'',rivalNombre:'',fecha:'',hora:'',lugar:''},jugadores:[],reservas:[],eliminadosTarde:[],resultado:{local:'',visita:''},pagos:{},sheetsUrl:'https://script.google.com/macros/s/AKfycbxW26uj23lVrpQ_D2HU18s2Vypydkaqa8xYsUqn2sVCXM7F47dIDMiJObarmqX5UA_p/exec'};
 let state=JSON.parse(JSON.stringify(DEFAULT_STATE));
 const ADMIN_PASS='liwen2024';
 let isAdmin=false,deleteTarget=null,cdInterval=null;
@@ -476,6 +476,7 @@ function init(){
       if(!state.pagos)state.pagos={};
       if(!state.partido)state.partido={tipo:'',rivalNombre:'',fecha:'',hora:'',lugar:''};
       if(!state.resultado)state.resultado={local:'',visita:''};
+      if(!state.sheetsUrl)state.sheetsUrl=DEFAULT_STATE.sheetsUrl;
     }
   }catch(e){}
   renderAll();
