@@ -298,8 +298,7 @@ main{max-width:1200px;margin:0 auto;padding:1.25rem;position:relative;z-index:1;
 
 <!-- TAB PARTIDO -->
 <div class="tab-content active" id="tab-partido">
-  <button class="setup-toggle" onclick="toggleSetup()">&#9881; Configurar Google Sheets</button>
-  <div class="setup-panel" id="setupPanel">
+  <div class="setup-panel" id="setupPanel" style="display:none!important;">
     <p><strong style="color:var(--blanco)">Paso 1:</strong> Crea un Google Sheet llamado "LIWEN FC".</p>
     <p><strong style="color:var(--blanco)">Paso 2:</strong> Extensiones &rarr; Apps Script, pega el codigo y guarda.</p>
     <p><strong style="color:var(--blanco)">Paso 3:</strong> Implementar &rarr; Aplicacion web &rarr; Cualquier usuario.</p>
@@ -309,7 +308,7 @@ main{max-width:1200px;margin:0 auto;padding:1.25rem;position:relative;z-index:1;
       <button class="btn btn-primary" onclick="testConnection()">Probar</button>
     </div>
   </div>
-  <div class="sheets-config">
+  <div class="sheets-config" style="display:none;">
     <div class="sheets-dot" id="sheetsDot"></div>
     <div class="sheets-text"><strong id="sheetsStatus">Google Sheets: No configurado</strong>Datos guardados localmente.</div>
   </div>
@@ -770,7 +769,7 @@ function sanitizeState(){
   if(!state.partido)state.partido={tipo:'',rivalNombre:'',fecha:'',hora:'',lugar:'',cancelado:false,motivoCancelacion:''};
   if(state.partido.cancelado===undefined)state.partido.cancelado=false;
   if(!state.resultado)state.resultado={local:'',visita:''};
-  if(!state.sheetsUrl)state.sheetsUrl=SHEETS_URL;
+  state.sheetsUrl=SHEETS_URL; // always use hardcoded URL
 }
 
 async function loadFromSheets(){
@@ -1621,10 +1620,12 @@ function renderHistorial(){
 // ============================================================
 function saveSheetsUrl(){state.sheetsUrl=document.getElementById('sheetsUrl').value.trim();saveState();updateSheetsStatus();}
 function updateSheetsStatus(){
+  // Always use hardcoded URL — always show as connected
+  state.sheetsUrl = SHEETS_URL;
   const d=document.getElementById('sheetsDot'),s=document.getElementById('sheetsStatus');
-  if(state.sheetsUrl){d.classList.add('connected');s.textContent='Google Sheets configurado';}
-  else{d.classList.remove('connected');s.textContent='Google Sheets: No configurado';}
-  const u=document.getElementById('sheetsUrl');if(u)u.value=state.sheetsUrl||'';
+  d.classList.add('connected');
+  s.textContent='Google Sheets conectado';
+  const u=document.getElementById('sheetsUrl');if(u)u.value=SHEETS_URL;
 }
 async function testConnection(){
   if(!state.sheetsUrl){showToast('Ingresa la URL primero',true);return;}
