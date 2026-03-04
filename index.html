@@ -6,33 +6,37 @@
 <title>LIWEN FC</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--verde:#00C853;--verde-dark:#007A33;--verde-neon:#39FF14;--negro:#080C0A;--gris-dark:#111714;--gris-mid:#1A2018;--gris-card:#1E2820;--gris-border:#2A3828;--blanco:#F0F7F2;--amarillo:#FFD600;--rojo:#FF3D3D;--azul:#4FC3F7;--texto-muted:#6B8C72;}
+:root{--verde:#00C853;--verde-dark:#007A33;--verde-neon:#39FF14;--negro:#080C0A;--gris-dark:#111714;--gris-mid:#1A2018;--gris-card:#1E2820;--gris-border:#2A3828;--blanco:#F0F7F2;--amarillo:#FFD600;--rojo:#FF3D3D;--azul:#4FC3F7;--naranja:#FF8C00;--texto-muted:#6B8C72;}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--negro);color:var(--blanco);font-family:'Barlow',sans-serif;min-height:100vh;overflow-x:hidden;}
 body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 20%,rgba(0,200,83,0.06) 0%,transparent 50%),radial-gradient(ellipse at 80% 80%,rgba(0,122,51,0.04) 0%,transparent 50%);pointer-events:none;z-index:0;}
 header{position:sticky;top:0;z-index:100;background:rgba(8,12,10,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--gris-border);padding:0 1.5rem;}
-.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px;}
+.header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px;}
 .logo{display:flex;align-items:center;gap:10px;}
 .logo-icon{width:38px;height:38px;background:var(--verde);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;}
 .logo-text{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:3px;}
 .logo-text span{color:var(--verde);}
-.header-right{display:flex;align-items:center;gap:10px;}
-.sync-btn{background:none;border:1px solid var(--gris-border);color:var(--texto-muted);padding:6px 12px;border-radius:6px;cursor:pointer;font-family:'Barlow',sans-serif;font-size:.8rem;transition:all .2s;display:flex;align-items:center;gap:6px;}
+.header-right{display:flex;align-items:center;gap:8px;}
+.sync-btn{background:none;border:1px solid var(--gris-border);color:var(--texto-muted);padding:6px 10px;border-radius:6px;cursor:pointer;font-family:'Barlow',sans-serif;font-size:.78rem;transition:all .2s;}
 .sync-btn:hover,.sync-btn.syncing{border-color:var(--verde);color:var(--verde);}
-.admin-btn{background:var(--verde-dark);border:1px solid var(--verde);color:var(--blanco);padding:6px 16px;border-radius:6px;cursor:pointer;font-family:'Barlow',sans-serif;font-size:.85rem;font-weight:600;transition:all .2s;}
+.admin-btn{background:var(--verde-dark);border:1px solid var(--verde);color:var(--blanco);padding:6px 14px;border-radius:6px;cursor:pointer;font-family:'Barlow',sans-serif;font-size:.85rem;font-weight:600;transition:all .2s;}
 .admin-btn:hover{background:var(--verde);}
 .admin-btn.logged{background:none;border-color:var(--rojo);color:var(--rojo);}
 .admin-btn.logged:hover{background:var(--rojo);color:white;}
 .tabs{background:var(--gris-dark);border-bottom:1px solid var(--gris-border);position:sticky;top:60px;z-index:99;overflow-x:auto;}
-.tabs-inner{max-width:1100px;margin:0 auto;display:flex;padding:0 1.5rem;min-width:max-content;}
-.tab{padding:13px 16px;font-family:'Barlow Condensed',sans-serif;font-size:.9rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--texto-muted);cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;}
+.tabs-inner{max-width:1200px;margin:0 auto;display:flex;padding:0 1rem;min-width:max-content;}
+.tab{padding:12px 14px;font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--texto-muted);cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;}
 .tab:hover{color:var(--blanco);}
 .tab.active{color:var(--verde);border-bottom-color:var(--verde);}
-main{max-width:1100px;margin:0 auto;padding:1.5rem;position:relative;z-index:1;}
+main{max-width:1200px;margin:0 auto;padding:1.25rem;position:relative;z-index:1;}
 .tab-content{display:none;}
 .tab-content.active{display:block;}
 .card{background:var(--gris-card);border:1px solid var(--gris-border);border-radius:12px;padding:1.25rem;margin-bottom:1rem;}
 .card-title{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:2px;color:var(--verde);margin-bottom:1rem;display:flex;align-items:center;gap:8px;}
+/* CANCELADO BANNER */
+.cancelado-banner{background:rgba(255,61,61,0.1);border:2px solid var(--rojo);border-radius:12px;padding:1.25rem;margin-bottom:1rem;text-align:center;}
+.cancelado-title{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:3px;color:var(--rojo);margin-bottom:6px;}
+.cancelado-motivo{font-size:.9rem;color:#ffaaaa;line-height:1.5;}
 /* MATCHUP */
 .matchup-banner{background:linear-gradient(135deg,var(--gris-mid),var(--gris-card));border:1px solid var(--verde-dark);border-radius:14px;padding:1.5rem 1rem;text-align:center;margin-bottom:1rem;position:relative;overflow:hidden;}
 .matchup-banner::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--verde),transparent);animation:shimmer 2.5s infinite;}
@@ -59,15 +63,18 @@ main{max-width:1100px;margin:0 auto;padding:1.5rem;position:relative;z-index:1;}
 .countdown-warning{background:rgba(255,61,61,.1);border:1px solid rgba(255,61,61,.4);border-radius:8px;padding:7px 14px;margin-top:10px;font-size:.8rem;color:var(--rojo);font-weight:600;display:flex;align-items:center;justify-content:center;gap:6px;}
 /* FORMS */
 .form-group label{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:1px;color:var(--texto-muted);margin-bottom:5px;}
-.form-group input,.form-group select{width:100%;background:var(--negro);border:1px solid var(--gris-border);border-radius:8px;color:var(--blanco);padding:9px 12px;font-family:'Barlow',sans-serif;font-size:.9rem;outline:none;transition:border-color .2s;}
-.form-group input:focus,.form-group select:focus{border-color:var(--verde);}
+.form-group input,.form-group select,.form-group textarea{width:100%;background:var(--negro);border:1px solid var(--gris-border);border-radius:8px;color:var(--blanco);padding:9px 12px;font-family:'Barlow',sans-serif;font-size:.9rem;outline:none;transition:border-color .2s;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--verde);}
 .form-group select option{background:var(--negro);}
+.form-group textarea{resize:vertical;min-height:70px;}
 /* BTNS */
 .btn{padding:9px 18px;border-radius:8px;border:none;cursor:pointer;font-family:'Barlow',sans-serif;font-weight:600;font-size:.88rem;transition:all .2s;}
 .btn-primary{background:var(--verde);color:var(--negro);}
 .btn-primary:hover{background:var(--verde-neon);}
 .btn-danger{background:none;border:1px solid var(--rojo);color:var(--rojo);padding:5px 9px;font-size:.78rem;}
 .btn-danger:hover{background:var(--rojo);color:white;}
+.btn-warning{background:none;border:1px solid var(--amarillo);color:var(--amarillo);}
+.btn-warning:hover{background:var(--amarillo);color:var(--negro);}
 .btn-small{padding:4px 9px;font-size:.78rem;}
 .btn-secondary{background:none;border:1px solid var(--gris-border);color:var(--texto-muted);}
 .btn-secondary:hover{border-color:var(--blanco);color:var(--blanco);}
@@ -79,7 +86,6 @@ main{max-width:1100px;margin:0 auto;padding:1.5rem;position:relative;z-index:1;}
 .tipo-opt .tipo-icon{font-size:1.5rem;margin-bottom:4px;}
 .tipo-opt .tipo-label{font-family:'Bebas Neue',sans-serif;font-size:.9rem;letter-spacing:1.5px;color:var(--blanco);}
 .tipo-opt .tipo-desc{font-size:.72rem;color:var(--texto-muted);margin-top:2px;}
-/* ADMIN PARTIDO FORM */
 .admin-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
 @media(max-width:600px){.admin-grid-3{grid-template-columns:1fr;}}
 /* JUGADORES */
@@ -104,10 +110,8 @@ main{max-width:1100px;margin:0 auto;padding:1.5rem;position:relative;z-index:1;}
 .progress-bar{background:var(--gris-border);border-radius:4px;height:6px;margin-top:8px;overflow:hidden;}
 .progress-fill{height:100%;background:linear-gradient(90deg,var(--verde-dark),var(--verde));border-radius:4px;transition:width .5s ease;}
 /* CANCHA */
-.campo-wrapper{position:relative;width:100%;max-width:400px;margin:0 auto;}
+.campo-wrapper{position:relative;width:100%;max-width:380px;margin:0 auto;}
 .campo-svg{width:100%;height:auto;}
-.campo-player{animation:popIn .35s cubic-bezier(.34,1.56,.64,1);}
-@keyframes popIn{from{transform:scale(0);opacity:0;}to{transform:scale(1);opacity:1;}}
 /* DEUDORES */
 .deudores-list{display:flex;flex-direction:column;gap:8px;}
 .deudor-item{display:flex;align-items:flex-start;gap:12px;border:1px solid rgba(255,61,61,.2);border-radius:8px;padding:10px 14px;background:rgba(255,61,61,.05);}
@@ -121,7 +125,7 @@ main{max-width:1100px;margin:0 auto;padding:1.5rem;position:relative;z-index:1;}
 .tag-eliminado{background:rgba(255,61,61,.15);color:var(--rojo);}
 .tag-reserva{background:rgba(255,214,0,.15);color:var(--amarillo);}
 /* STATS */
-.resultado-display{display:flex;align-items:center;justify-content:center;gap:1.5rem;padding:1.75rem 1rem;background:linear-gradient(135deg,var(--gris-mid),var(--gris-card));border-radius:12px;margin-bottom:1rem;flex-wrap:wrap;}
+.resultado-display{display:flex;align-items:center;justify-content:center;gap:1.5rem;padding:1.5rem 1rem;background:linear-gradient(135deg,var(--gris-mid),var(--gris-card));border-radius:12px;margin-bottom:1rem;flex-wrap:wrap;}
 .equipo-score{text-align:center;}
 .equipo-name{font-family:'Bebas Neue',sans-serif;font-size:.95rem;letter-spacing:2px;color:var(--texto-muted);margin-bottom:4px;}
 .score-num{font-family:'Bebas Neue',sans-serif;font-size:3.8rem;line-height:1;}
@@ -154,7 +158,7 @@ main{max-width:1100px;margin:0 auto;padding:1.5rem;position:relative;z-index:1;}
 /* MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:1000;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .2s;}
 .modal-overlay.active{opacity:1;pointer-events:all;}
-.modal{background:var(--gris-card);border:1px solid var(--gris-border);border-radius:16px;padding:1.75rem;width:90%;max-width:420px;transform:scale(.92);transition:transform .2s;}
+.modal{background:var(--gris-card);border:1px solid var(--gris-border);border-radius:16px;padding:1.75rem;width:90%;max-width:440px;transform:scale(.92);transition:transform .2s;max-height:90vh;overflow-y:auto;}
 .modal-overlay.active .modal{transform:scale(1);}
 .modal-title{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:3px;color:var(--verde);margin-bottom:1.25rem;text-align:center;}
 .modal-actions{display:flex;gap:10px;margin-top:1.25rem;}
@@ -173,6 +177,83 @@ main{max-width:1100px;margin:0 auto;padding:1.5rem;position:relative;z-index:1;}
 .jugo-no:hover{background:rgba(255,214,0,.18);}
 .row-2col{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
 @media(max-width:600px){.row-2col{grid-template-columns:1fr;}}
+
+/* ===== VOTACION ===== */
+.vote-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-top:1rem;}
+.vote-card{background:var(--gris-mid);border:2px solid var(--gris-border);border-radius:10px;padding:14px 10px;text-align:center;cursor:pointer;transition:all .2s;}
+.vote-card:hover{border-color:var(--verde-dark);}
+.vote-card.voted{border-color:var(--verde);background:rgba(0,200,83,.08);}
+.vote-card.winner{border-color:var(--amarillo);background:rgba(255,214,0,.1);animation:glow .8s ease infinite alternate;}
+@keyframes glow{from{box-shadow:0 0 8px rgba(255,214,0,.3);}to{box-shadow:0 0 20px rgba(255,214,0,.6);}}
+.vote-name{font-weight:600;font-size:.9rem;margin-bottom:4px;}
+.vote-count{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--verde);}
+.vote-pct{font-size:.7rem;color:var(--texto-muted);}
+.vote-bar-wrap{background:var(--gris-border);border-radius:3px;height:4px;margin-top:6px;overflow:hidden;}
+.vote-bar{height:100%;background:linear-gradient(90deg,var(--verde-dark),var(--verde));border-radius:3px;transition:width .5s ease;}
+.vote-rut-form{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:end;margin-bottom:1rem;}
+
+/* ===== NIVELES / EQUIPOS ===== */
+.nivel-row{display:grid;grid-template-columns:1fr 80px 180px auto;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--gris-border);}
+@media(max-width:600px){.nivel-row{grid-template-columns:1fr 60px auto;}.nivel-slider-wrap{display:none;}}
+.nivel-nombre{font-weight:600;font-size:.9rem;}
+.nivel-val{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;text-align:center;}
+.nivel-slider{width:100%;-webkit-appearance:none;appearance:none;height:6px;border-radius:3px;background:var(--gris-border);outline:none;}
+.nivel-slider::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--verde);cursor:pointer;}
+.nivel-badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:.7rem;font-weight:700;}
+.nivel-elite{background:rgba(255,214,0,.15);color:var(--amarillo);}
+.nivel-bueno{background:rgba(0,200,83,.15);color:var(--verde);}
+.nivel-medio{background:rgba(79,195,247,.15);color:var(--azul);}
+.nivel-bajo{background:rgba(255,61,61,.15);color:var(--rojo);}
+/* Equipos propuestos */
+.equipos-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem;}
+@media(max-width:600px){.equipos-grid{grid-template-columns:1fr;}}
+.equipo-card{background:var(--gris-mid);border:1px solid var(--gris-border);border-radius:10px;padding:1rem;}
+.equipo-card-title{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:2px;margin-bottom:.75rem;display:flex;justify-content:space-between;align-items:center;}
+.equipo-avg{font-size:.75rem;color:var(--texto-muted);}
+.equipo-player-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.85rem;}
+.equipo-player-row:last-child{border-bottom:none;}
+.equipo-player-nivel{font-family:'Bebas Neue',sans-serif;font-size:.9rem;color:var(--verde);}
+.balance-bar{background:var(--gris-border);border-radius:4px;height:8px;margin:10px 0;overflow:hidden;position:relative;}
+.balance-fill-a{height:100%;background:var(--verde);border-radius:4px 0 0 4px;transition:width .5s;}
+.balance-fill-b{position:absolute;top:0;right:0;height:100%;background:var(--rojo);border-radius:0 4px 4px 0;transition:width .5s;}
+/* Cancha equipo */
+.mini-campo-wrap{max-width:280px;margin:0 auto;}
+
+/* ===== HISTORIAL ===== */
+.historial-card{background:var(--gris-mid);border:1px solid var(--gris-border);border-radius:10px;padding:1rem;margin-bottom:10px;transition:all .2s;}
+.historial-card:hover{border-color:var(--verde-dark);}
+.historial-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;flex-wrap:wrap;gap:8px;}
+.historial-matchup{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:2px;}
+.historial-score{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;}
+.historial-score .win{color:var(--verde);}
+.historial-score .lose{color:var(--rojo);}
+.historial-score .draw{color:var(--amarillo);}
+.historial-meta{font-size:.75rem;color:var(--texto-muted);}
+.historial-mvp{display:flex;align-items:center;gap:6px;margin-top:6px;font-size:.82rem;}
+.mvp-star{color:var(--amarillo);}
+/* RANKING */
+.ranking-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--gris-border);}
+.ranking-pos{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--texto-muted);width:32px;text-align:center;flex-shrink:0;}
+.ranking-pos.gold{color:var(--amarillo);}
+.ranking-pos.silver{color:#C0C0C0;}
+.ranking-pos.bronze{color:#CD7F32;}
+.ranking-info{flex:1;}
+.ranking-name{font-weight:600;font-size:.95rem;}
+.ranking-sub{font-size:.75rem;color:var(--texto-muted);}
+.ranking-stars{font-size:.85rem;color:var(--amarillo);}
+.ranking-count{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--amarillo);}
+
+/* BENCH SIDEBAR */
+.cancha-with-bench{display:flex;gap:12px;align-items:flex-start;}
+.campo-wrapper{flex:1;min-width:0;}
+.bench-sidebar{width:90px;flex-shrink:0;background:var(--gris-mid);border:1px solid var(--gris-border);border-radius:10px;padding:8px 6px;}
+.bench-title{font-family:'Bebas Neue',sans-serif;font-size:.75rem;letter-spacing:2px;color:var(--amarillo);text-align:center;margin-bottom:8px;border-bottom:1px solid rgba(255,214,0,.2);padding-bottom:4px;}
+.bench-player{display:flex;align-items:center;gap:4px;padding:5px 4px;border-radius:6px;margin-bottom:3px;background:rgba(255,255,255,.03);border:1px solid transparent;}
+.bench-player.bench-next{background:rgba(255,214,0,.08);border-color:rgba(255,214,0,.3);}
+.bench-num{font-family:'Bebas Neue',sans-serif;font-size:.75rem;color:var(--texto-muted);width:16px;text-align:center;flex-shrink:0;}
+.bench-player.bench-next .bench-num{color:var(--amarillo);}
+.bench-name{font-size:.72rem;color:var(--blanco);font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.row-ascendido{background:rgba(255,214,0,.04);}
 </style>
 </head>
 <body>
@@ -183,7 +264,7 @@ main{max-width:1100px;margin:0 auto;padding:1.5rem;position:relative;z-index:1;}
       <div class="logo-text">LIWEN <span>FC</span></div>
     </div>
     <div class="header-right">
-      <button class="sync-btn" id="syncBtn" onclick="syncSheets()"><span id="syncIcon">&#8635;</span> Sheets</button>
+      <button class="sync-btn" id="syncBtn" onclick="syncSheets()">&#8635; Sheets</button>
       <button class="admin-btn" id="adminBtn" onclick="toggleAdmin()">&#128274; Admin</button>
     </div>
   </div>
@@ -193,244 +274,340 @@ main{max-width:1100px;margin:0 auto;padding:1.5rem;position:relative;z-index:1;}
     <div class="tab active" onclick="showTab('partido',this)">&#9917; Partido</div>
     <div class="tab" onclick="showTab('jugadores',this)">&#128101; Jugadores</div>
     <div class="tab" onclick="showTab('cancha',this)">&#127967; Cancha</div>
-    <div class="tab" onclick="showTab('reservas',this)">&#128203; Reservas</div>
-    <div class="tab" onclick="showTab('deudores',this)">&#9888;&#65039; Deudores</div>
+    <div class="tab" onclick="showTab('deudores',this)">&#9888; Deudores</div>
     <div class="tab" onclick="showTab('estadisticas',this)">&#128202; Stats</div>
+    <div class="tab" onclick="showTab('votacion',this)">&#11088; MVP</div>
+    <div class="tab" onclick="showTab('niveles',this)">&#9878; Niveles</div>
+    <div class="tab" onclick="showTab('historial',this)">&#128218; Historial</div>
   </div>
 </div>
 <main>
-  <!-- TAB PARTIDO -->
-  <div class="tab-content active" id="tab-partido">
-    <button class="setup-toggle" onclick="toggleSetup()">&#9881;&#65039; Configurar Google Sheets</button>
-    <div class="setup-panel" id="setupPanel">
-      <p><strong style="color:var(--blanco)">Paso 1:</strong> Crea un Google Sheet llamado "LIWEN FC".</p>
-      <p><strong style="color:var(--blanco)">Paso 2:</strong> Extensiones &rarr; Apps Script, pega el codigo del apps-script.gs y guarda.</p>
-      <p><strong style="color:var(--blanco)">Paso 3:</strong> Implementar &rarr; Nueva implementacion &rarr; Aplicacion web. Ejecutar como: Yo | Acceso: Cualquier usuario.</p>
-      <p><strong style="color:var(--blanco)">Paso 4:</strong> Copia la URL y pegala aqui:</p>
-      <div class="setup-grid">
-        <div class="form-group"><input type="text" id="sheetsUrl" placeholder="https://script.google.com/macros/s/..." oninput="saveSheetsUrl()"></div>
-        <button class="btn btn-primary" onclick="testConnection()">Probar</button>
-      </div>
+
+<!-- TAB PARTIDO -->
+<div class="tab-content active" id="tab-partido">
+  <button class="setup-toggle" onclick="toggleSetup()">&#9881; Configurar Google Sheets</button>
+  <div class="setup-panel" id="setupPanel">
+    <p><strong style="color:var(--blanco)">Paso 1:</strong> Crea un Google Sheet llamado "LIWEN FC".</p>
+    <p><strong style="color:var(--blanco)">Paso 2:</strong> Extensiones &rarr; Apps Script, pega el codigo y guarda.</p>
+    <p><strong style="color:var(--blanco)">Paso 3:</strong> Implementar &rarr; Aplicacion web &rarr; Cualquier usuario.</p>
+    <div class="setup-grid">
+      <div class="form-group"><input type="text" id="sheetsUrl" placeholder="https://script.google.com/macros/s/..." oninput="saveSheetsUrl()"></div>
+      <button class="btn btn-primary" onclick="testConnection()">Probar</button>
     </div>
-    <div class="sheets-config">
-      <div class="sheets-dot" id="sheetsDot"></div>
-      <div class="sheets-text"><strong id="sheetsStatus">Google Sheets: No configurado</strong>Datos guardados localmente. Configura Sheets para respaldo en la nube.</div>
+  </div>
+  <div class="sheets-config">
+    <div class="sheets-dot" id="sheetsDot"></div>
+    <div class="sheets-text"><strong id="sheetsStatus">Google Sheets: No configurado</strong>Datos guardados localmente.</div>
+  </div>
+
+  <!-- CANCELADO BANNER -->
+  <div id="canceladoBanner" style="display:none;"></div>
+
+  <!-- MATCHUP BANNER -->
+  <div class="matchup-banner" id="matchupBanner">
+    <div class="matchup-type-badge" id="matchupTypeBadge">Sin partido configurado</div>
+    <div class="matchup-teams" id="matchupTeams">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--texto-muted);letter-spacing:2px;">El encargado aun no ha configurado el partido</div>
     </div>
-    <!-- MATCHUP BANNER -->
-    <div class="matchup-banner" id="matchupBanner">
-      <div class="matchup-type-badge" id="matchupTypeBadge">Sin partido configurado</div>
-      <div class="matchup-teams" id="matchupTeams">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--texto-muted);letter-spacing:2px;">El encargado aun no ha configurado el partido</div>
-      </div>
-      <div class="matchup-meta" id="matchupMeta" style="display:none;">
-        <div><div class="matchup-meta-label">&#128197; Fecha</div><div class="matchup-meta-val" id="metaFecha">-</div></div>
-        <div><div class="matchup-meta-label">&#128336; Hora</div><div class="matchup-meta-val" id="metaHora">-</div></div>
-        <div><div class="matchup-meta-label">&#128205; Lugar</div><div class="matchup-meta-val" id="metaLugar">-</div></div>
-        <div><div class="matchup-meta-label">&#128101; Cupos</div><div class="matchup-meta-val" id="metaCupos">-</div></div>
-      </div>
-    </div>
-    <!-- COUNTDOWN -->
-    <div class="countdown-container">
-      <div class="countdown-label">&#9201; Cuenta regresiva</div>
-      <div class="countdown-units">
-        <div class="countdown-unit"><div class="countdown-num" id="cdDias">--</div><div class="countdown-unit-label">dias</div></div>
-        <div class="countdown-sep">:</div>
-        <div class="countdown-unit"><div class="countdown-num" id="cdHoras">--</div><div class="countdown-unit-label">horas</div></div>
-        <div class="countdown-sep">:</div>
-        <div class="countdown-unit"><div class="countdown-num" id="cdMins">--</div><div class="countdown-unit-label">mins</div></div>
-        <div class="countdown-sep">:</div>
-        <div class="countdown-unit"><div class="countdown-num" id="cdSegs">--</div><div class="countdown-unit-label">segs</div></div>
-      </div>
-      <div id="cdWarning"></div>
-    </div>
-    <!-- PROGRESS -->
-    <div class="card">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;">
-        <span style="font-size:.83rem;color:var(--texto-muted);">Jugadores confirmados</span>
-        <span class="counter-badge" id="progressText">0 / -</span>
-      </div>
-      <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
-    </div>
-    <!-- ADMIN PARTIDO -->
-    <div class="card" id="adminPartidoCard" style="display:none;">
-      <div class="card-title">&#9999;&#65039; Configurar Partido</div>
-      <div style="margin-bottom:1rem;">
-        <div class="form-group" style="margin-bottom:8px;"><label>Tipo de partido</label></div>
-        <div class="tipo-selector">
-          <div class="tipo-opt" id="tipoInterno" onclick="seleccionarTipo('interno')">
-            <div class="tipo-icon">&#128994;</div>
-            <div class="tipo-label">LIWEN VS LIWEN</div>
-            <div class="tipo-desc">Partido interno &middot; 22 jugadores</div>
-          </div>
-          <div class="tipo-opt" id="tipoExterno" onclick="seleccionarTipo('externo')">
-            <div class="tipo-icon">&#128308;</div>
-            <div class="tipo-label">VS Otro Equipo</div>
-            <div class="tipo-desc">Partido externo &middot; 11 jugadores</div>
-          </div>
-        </div>
-        <div id="rivalNameGroup" style="display:none;margin-top:8px;">
-          <div class="form-group"><label>Nombre del equipo rival</label><input type="text" id="inputRivalNombre" placeholder="Ej: Deportivo Norte" maxlength="30"></div>
-        </div>
-      </div>
-      <div class="admin-grid-3">
-        <div class="form-group"><label>Fecha</label><input type="date" id="inputFecha"></div>
-        <div class="form-group"><label>Hora</label><input type="time" id="inputHora"></div>
-        <div class="form-group"><label>Lugar</label><input type="text" id="inputLugar" placeholder="Cancha / Estadio"></div>
-      </div>
-      <button class="btn btn-primary" style="width:100%;margin-top:12px;" onclick="guardarPartido()">&#128190; Guardar Partido</button>
+    <div class="matchup-meta" id="matchupMeta" style="display:none;">
+      <div><div class="matchup-meta-label">&#128197; Fecha</div><div class="matchup-meta-val" id="metaFecha">-</div></div>
+      <div><div class="matchup-meta-label">&#128336; Hora</div><div class="matchup-meta-val" id="metaHora">-</div></div>
+      <div><div class="matchup-meta-label">&#128205; Lugar</div><div class="matchup-meta-val" id="metaLugar">-</div></div>
+      <div><div class="matchup-meta-label">&#128101; Cupos</div><div class="matchup-meta-val" id="metaCupos">-</div></div>
     </div>
   </div>
 
-  <!-- TAB JUGADORES -->
-  <div class="tab-content" id="tab-jugadores">
-    <div class="card">
-      <div class="jugadores-header">
-        <div class="card-title" style="margin-bottom:0">&#128101; Lista Titular</div>
-        <span class="counter-badge" id="jugadoresCounter">0/-</span>
-      </div>
-      <div class="jugador-row" style="border-bottom:2px solid var(--gris-border);padding-bottom:5px;">
-        <div class="jugador-num" style="font-size:.65rem;text-transform:uppercase;letter-spacing:1px;color:var(--texto-muted);">#</div>
-        <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:1px;color:var(--texto-muted);">Nombre</div>
-        <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:1px;color:var(--texto-muted);">RUT</div>
-        <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:1px;color:var(--texto-muted);">Observacion</div>
-        <div></div>
-      </div>
-      <div id="jugadoresList"></div>
-      <div class="add-form" id="addJugadorForm">
-        <div class="form-group"><label>Nombre</label><input type="text" id="newNombre" placeholder="Nombre completo" maxlength="40"></div>
-        <div class="form-group"><label>RUT</label><input type="text" id="newRut" placeholder="12.345.678-9" maxlength="12"></div>
-        <div class="form-group"><label>Observacion</label><input type="text" id="newObs" placeholder="Opcional" maxlength="60"></div>
-        <button class="btn btn-primary" onclick="agregarJugador()">+ Agregar</button>
-      </div>
-      <div id="listaLlenaMsg" style="display:none;text-align:center;padding:1rem;color:var(--amarillo);font-size:.88rem;">
-        Lista completa &mdash; agrega reservas en la pestana <strong>Reservas</strong>
-      </div>
+  <!-- COUNTDOWN -->
+  <div class="countdown-container" id="countdownContainer">
+    <div class="countdown-label">&#9201; Cuenta regresiva</div>
+    <div class="countdown-units">
+      <div class="countdown-unit"><div class="countdown-num" id="cdDias">--</div><div class="countdown-unit-label">dias</div></div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit"><div class="countdown-num" id="cdHoras">--</div><div class="countdown-unit-label">horas</div></div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit"><div class="countdown-num" id="cdMins">--</div><div class="countdown-unit-label">mins</div></div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit"><div class="countdown-num" id="cdSegs">--</div><div class="countdown-unit-label">segs</div></div>
     </div>
+    <div id="cdWarning"></div>
   </div>
 
-  <!-- TAB CANCHA -->
-  <div class="tab-content" id="tab-cancha">
-    <div class="card">
-      <div class="card-title">&#127967; Visualizacion 4-4-2</div>
-      <div class="campo-wrapper">
-        <svg class="campo-svg" viewBox="0 0 300 480" xmlns="http://www.w3.org/2000/svg">
-          <rect width="300" height="480" rx="4" fill="#1a3a1e"/>
-          <rect x="15" y="15" width="270" height="450" rx="2" fill="none" stroke="#2d6b35" stroke-width="2"/>
-          <line x1="15" y1="240" x2="285" y2="240" stroke="#2d6b35" stroke-width="1.5"/>
-          <circle cx="150" cy="240" r="40" fill="none" stroke="#2d6b35" stroke-width="1.5"/>
-          <circle cx="150" cy="240" r="3" fill="#2d6b35"/>
-          <rect x="75" y="15" width="150" height="65" fill="none" stroke="#2d6b35" stroke-width="1.5"/>
-          <rect x="110" y="15" width="80" height="28" fill="none" stroke="#2d6b35" stroke-width="1.5"/>
-          <rect x="75" y="400" width="150" height="65" fill="none" stroke="#2d6b35" stroke-width="1.5"/>
-          <rect x="110" y="437" width="80" height="28" fill="none" stroke="#2d6b35" stroke-width="1.5"/>
-          <rect x="115" y="13" width="70" height="8" rx="2" fill="#1a3a1e" stroke="#2d6b35" stroke-width="1.5"/>
-          <rect x="115" y="459" width="70" height="8" rx="2" fill="#1a3a1e" stroke="#2d6b35" stroke-width="1.5"/>
-          <path d="M 100,80 A 30,30 0 0,1 200,80" fill="none" stroke="#2d6b35" stroke-width="1.5"/>
-          <path d="M 100,400 A 30,30 0 0,0 200,400" fill="none" stroke="#2d6b35" stroke-width="1.5"/>
-          <g id="pos-0" opacity="0.2"><circle cx="150" cy="445" r="18" fill="#007A33" stroke="#00C853" stroke-width="2"/><text x="150" y="442" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-0">POR</text><text x="150" y="451" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-0"></text></g>
-          <g id="pos-1" opacity="0.2"><circle cx="55" cy="380" r="18" fill="#007A33" stroke="#00C853" stroke-width="2"/><text x="55" y="377" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-1">DEF</text><text x="55" y="386" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-1"></text></g>
-          <g id="pos-2" opacity="0.2"><circle cx="115" cy="380" r="18" fill="#007A33" stroke="#00C853" stroke-width="2"/><text x="115" y="377" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-2">DEF</text><text x="115" y="386" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-2"></text></g>
-          <g id="pos-3" opacity="0.2"><circle cx="185" cy="380" r="18" fill="#007A33" stroke="#00C853" stroke-width="2"/><text x="185" y="377" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-3">DEF</text><text x="185" y="386" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-3"></text></g>
-          <g id="pos-4" opacity="0.2"><circle cx="245" cy="380" r="18" fill="#007A33" stroke="#00C853" stroke-width="2"/><text x="245" y="377" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-4">DEF</text><text x="245" y="386" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-4"></text></g>
-          <g id="pos-5" opacity="0.2"><circle cx="55" cy="285" r="18" fill="#007A33" stroke="#00C853" stroke-width="2"/><text x="55" y="282" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-5">MED</text><text x="55" y="291" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-5"></text></g>
-          <g id="pos-6" opacity="0.2"><circle cx="115" cy="285" r="18" fill="#007A33" stroke="#00C853" stroke-width="2"/><text x="115" y="282" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-6">MED</text><text x="115" y="291" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-6"></text></g>
-          <g id="pos-7" opacity="0.2"><circle cx="185" cy="285" r="18" fill="#007A33" stroke="#00C853" stroke-width="2"/><text x="185" y="282" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-7">MED</text><text x="185" y="291" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-7"></text></g>
-          <g id="pos-8" opacity="0.2"><circle cx="245" cy="285" r="18" fill="#007A33" stroke="#00C853" stroke-width="2"/><text x="245" y="282" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-8">MED</text><text x="245" y="291" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-8"></text></g>
-          <g id="pos-9" opacity="0.2"><circle cx="105" cy="180" r="18" fill="#007A33" stroke="#00C853" stroke-width="2"/><text x="105" y="177" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-9">DEL</text><text x="105" y="186" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-9"></text></g>
-          <g id="pos-10" opacity="0.2"><circle cx="195" cy="180" r="18" fill="#007A33" stroke="#00C853" stroke-width="2"/><text x="195" y="177" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-10">DEL</text><text x="195" y="186" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-10"></text></g>
-          <g id="pos-11" opacity="0.15"><circle cx="150" cy="35" r="18" fill="#7A0000" stroke="#FF3D3D" stroke-width="2"/><text x="150" y="32" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-11">POR</text><text x="150" y="41" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-11"></text></g>
-          <g id="pos-12" opacity="0.15"><circle cx="55" cy="100" r="18" fill="#7A0000" stroke="#FF3D3D" stroke-width="2"/><text x="55" y="97" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-12">DEF</text><text x="55" y="106" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-12"></text></g>
-          <g id="pos-13" opacity="0.15"><circle cx="115" cy="100" r="18" fill="#7A0000" stroke="#FF3D3D" stroke-width="2"/><text x="115" y="97" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-13">DEF</text><text x="115" y="106" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-13"></text></g>
-          <g id="pos-14" opacity="0.15"><circle cx="185" cy="100" r="18" fill="#7A0000" stroke="#FF3D3D" stroke-width="2"/><text x="185" y="97" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-14">DEF</text><text x="185" y="106" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-14"></text></g>
-          <g id="pos-15" opacity="0.15"><circle cx="245" cy="100" r="18" fill="#7A0000" stroke="#FF3D3D" stroke-width="2"/><text x="245" y="97" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-15">DEF</text><text x="245" y="106" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-15"></text></g>
-          <g id="pos-16" opacity="0.15"><circle cx="55" cy="195" r="18" fill="#7A0000" stroke="#FF3D3D" stroke-width="2"/><text x="55" y="192" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-16">MED</text><text x="55" y="201" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-16"></text></g>
-          <g id="pos-17" opacity="0.15"><circle cx="115" cy="195" r="18" fill="#7A0000" stroke="#FF3D3D" stroke-width="2"/><text x="115" y="192" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-17">MED</text><text x="115" y="201" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-17"></text></g>
-          <g id="pos-18" opacity="0.15"><circle cx="185" cy="195" r="18" fill="#7A0000" stroke="#FF3D3D" stroke-width="2"/><text x="185" y="192" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-18">MED</text><text x="185" y="201" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-18"></text></g>
-          <g id="pos-19" opacity="0.15"><circle cx="245" cy="195" r="18" fill="#7A0000" stroke="#FF3D3D" stroke-width="2"/><text x="245" y="192" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-19">MED</text><text x="245" y="201" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-19"></text></g>
-          <g id="pos-20" opacity="0.15"><circle cx="105" cy="305" r="18" fill="#7A0000" stroke="#FF3D3D" stroke-width="2"/><text x="105" y="302" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-20">DEL</text><text x="105" y="311" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-20"></text></g>
-          <g id="pos-21" opacity="0.15"><circle cx="195" cy="305" r="18" fill="#7A0000" stroke="#FF3D3D" stroke-width="2"/><text x="195" y="302" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-21">DEL</text><text x="195" y="311" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-21"></text></g>
-          <text x="150" y="468" text-anchor="middle" font-size="5.5" fill="#00C853" opacity="0.5" font-family="Bebas Neue,sans-serif" letter-spacing="2">LIWEN FC</text>
-          <text x="150" y="22" text-anchor="middle" font-size="5.5" fill="#FF3D3D" opacity="0.5" font-family="Bebas Neue,sans-serif" letter-spacing="2" id="rivalLabel">RIVAL</text>
-        </svg>
-      </div>
-      <p style="text-align:center;font-size:.72rem;color:var(--texto-muted);margin-top:6px;">Verde = LIWEN FC (abajo) &middot; Rojo = <span id="canchaRivalName">Rival</span> (arriba)</p>
+  <!-- PROGRESS -->
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;">
+      <span style="font-size:.83rem;color:var(--texto-muted);">Jugadores confirmados</span>
+      <span class="counter-badge" id="progressText">0 / -</span>
     </div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
   </div>
 
-  <!-- TAB RESERVAS -->
-  <div class="tab-content" id="tab-reservas">
-    <div class="card">
-      <div class="jugadores-header">
-        <div class="card-title" style="margin-bottom:0">&#128203; Lista de Reservas</div>
-        <span class="counter-badge" id="reservasCounter" style="background:rgba(255,214,0,.12);color:var(--amarillo);">0 reservas</span>
+  <!-- ADMIN PARTIDO -->
+  <div class="card" id="adminPartidoCard" style="display:none;">
+    <div class="card-title">&#9999; Configurar Partido</div>
+    <div style="margin-bottom:1rem;">
+      <div class="form-group" style="margin-bottom:8px;"><label>Tipo de partido</label></div>
+      <div class="tipo-selector">
+        <div class="tipo-opt" id="tipoInterno" onclick="seleccionarTipo('interno')">
+          <div class="tipo-icon">&#128994;</div>
+          <div class="tipo-label">LIWEN VS LIWEN</div>
+          <div class="tipo-desc">Interno &middot; 22 jugadores</div>
+        </div>
+        <div class="tipo-opt" id="tipoExterno" onclick="seleccionarTipo('externo')">
+          <div class="tipo-icon">&#128308;</div>
+          <div class="tipo-label">VS Otro Equipo</div>
+          <div class="tipo-desc">Externo &middot; 11 jugadores</div>
+        </div>
       </div>
-      <div id="listaNoLlena" style="text-align:center;padding:1.5rem;color:var(--texto-muted);font-size:.85rem;">Las reservas se activan cuando los cupos titulares esten completos.</div>
-      <div id="reservasContent" style="display:none;">
-        <div style="background:rgba(255,214,0,.06);border:1px solid rgba(255,214,0,.2);border-radius:8px;padding:10px 14px;margin-bottom:10px;font-size:.82rem;color:var(--amarillo);">
-          &#11014;&#65039; El primero de la lista sube automaticamente si se libera un cupo titular.
-        </div>
-        <div class="jugador-row" style="border-bottom:2px solid var(--gris-border);padding-bottom:5px;">
-          <div class="reserva-num" style="font-size:.65rem;text-transform:uppercase;color:var(--texto-muted);">#</div>
-          <div style="font-size:.65rem;text-transform:uppercase;color:var(--texto-muted);">Nombre</div>
-          <div style="font-size:.65rem;text-transform:uppercase;color:var(--texto-muted);">RUT</div>
-          <div style="font-size:.65rem;text-transform:uppercase;color:var(--texto-muted);">Observacion</div>
-          <div></div>
-        </div>
-        <div id="reservasList"></div>
-        <div class="add-form">
-          <div class="form-group"><label>Nombre</label><input type="text" id="resNombre" placeholder="Nombre completo" maxlength="40"></div>
-          <div class="form-group"><label>RUT</label><input type="text" id="resRut" placeholder="12.345.678-9" maxlength="12"></div>
-          <div class="form-group"><label>Observacion</label><input type="text" id="resObs" placeholder="Opcional" maxlength="60"></div>
-          <button class="btn btn-primary" onclick="agregarReserva()">+ Agregar</button>
-        </div>
+      <div id="rivalNameGroup" style="display:none;margin-top:8px;">
+        <div class="form-group"><label>Nombre del equipo rival</label><input type="text" id="inputRivalNombre" placeholder="Ej: Deportivo Norte" maxlength="30"></div>
       </div>
     </div>
+    <div class="admin-grid-3">
+      <div class="form-group"><label>Fecha</label><input type="date" id="inputFecha"></div>
+      <div class="form-group"><label>Hora</label><input type="time" id="inputHora"></div>
+      <div class="form-group"><label>Lugar</label><input type="text" id="inputLugar" placeholder="Cancha / Estadio"></div>
+    </div>
+    <button class="btn btn-primary" style="width:100%;margin-top:12px;" onclick="guardarPartido()">&#128190; Guardar Partido</button>
+
+    <!-- CANCELAR PARTIDO -->
+    <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--gris-border);">
+      <div class="card-title" style="color:var(--rojo);margin-bottom:.75rem;">&#10060; Cancelar Partido</div>
+      <div class="form-group" style="margin-bottom:8px;">
+        <label>Motivo de cancelacion</label>
+        <textarea id="inputMotivoCancelacion" placeholder="Ej: Lluvia, cancha ocupada, falta de jugadores..."></textarea>
+      </div>
+      <button class="btn btn-warning" style="width:100%;" onclick="cancelarPartido()">Cancelar este partido</button>
+      <button id="btnReactivar" class="btn btn-primary" style="width:100%;margin-top:8px;display:none;" onclick="reactivarPartido()">&#9654; Reactivar Partido</button>
+    </div>
+  </div>
+</div>
+
+<!-- TAB JUGADORES (unificado con reservas) -->
+<div class="tab-content" id="tab-jugadores">
+  <!-- TITULARES -->
+  <div class="card">
+    <div class="jugadores-header">
+      <div class="card-title" style="margin-bottom:0">&#9917; Titulares</div>
+      <span class="counter-badge" id="jugadoresCounter">0/-</span>
+    </div>
+    <!-- headers -->
+    <div class="jugador-row" style="border-bottom:2px solid var(--gris-border);padding-bottom:5px;">
+      <div class="jugador-num" style="font-size:.65rem;text-transform:uppercase;color:var(--texto-muted);">#</div>
+      <div style="font-size:.65rem;text-transform:uppercase;color:var(--texto-muted);">Nombre</div>
+      <div style="font-size:.65rem;text-transform:uppercase;color:var(--texto-muted);">RUT</div>
+      <div style="font-size:.65rem;text-transform:uppercase;color:var(--texto-muted);">Obs</div>
+      <div></div>
+    </div>
+    <div id="jugadoresList"></div>
+    <!-- Formulario agregar titular -->
+    <div class="add-form" id="addJugadorForm">
+      <div class="form-group"><label>Nombre</label><input type="text" id="newNombre" placeholder="Nombre completo" maxlength="40"></div>
+      <div class="form-group"><label>RUT</label><input type="text" id="newRut" placeholder="12.345.678-9" maxlength="12"></div>
+      <div class="form-group"><label>Obs</label><input type="text" id="newObs" placeholder="Opcional" maxlength="60"></div>
+      <button class="btn btn-primary" onclick="agregarJugador()">+ Agregar</button>
+    </div>
+    <div id="listaLlenaMsg" style="display:none;text-align:center;padding:.75rem;color:var(--amarillo);font-size:.85rem;">&#9989; Lista completa &mdash; los siguientes van a Reservas</div>
   </div>
 
-  <!-- TAB DEUDORES -->
-  <div class="tab-content" id="tab-deudores">
-    <div class="card">
-      <div class="card-title">&#9888;&#65039; Lista de Deudores</div>
-      <div style="background:var(--gris-mid);border-radius:8px;padding:10px 14px;margin-bottom:1rem;font-size:.8rem;color:var(--texto-muted);line-height:1.6;">
-        Incluye: <span style="color:var(--verde);">&#9632;</span> Titulares (11 o 22) &nbsp;&middot;&nbsp; <span style="color:var(--amarillo);">&#9632;</span> Reservas marcadas como "Jugo" &nbsp;&middot;&nbsp; <span style="color:var(--rojo);">&#9632;</span> Eliminados dentro de las 8h previas.
-      </div>
-      <div class="deudores-list" id="deudoresList">
-        <div class="empty-state"><div class="empty-icon">&#9989;</div><p>Sin deudores &mdash; se llenara cuando el partido este configurado</p></div>
-      </div>
+  <!-- RESERVAS (siempre visible, pero add-form bloqueado hasta que lista esté llena) -->
+  <div class="card">
+    <div class="jugadores-header">
+      <div class="card-title" style="margin-bottom:0;color:var(--amarillo);">&#128203; Reservas</div>
+      <span class="counter-badge" id="reservasCounter" style="background:rgba(255,214,0,.12);color:var(--amarillo);">0</span>
+    </div>
+    <div id="reservasLockMsg" style="background:rgba(255,214,0,.06);border:1px solid rgba(255,214,0,.15);border-radius:8px;padding:10px 14px;margin-bottom:10px;font-size:.82rem;color:var(--texto-muted);">
+      &#128274; Las reservas se activan cuando los cupos titulares esten completos.<br>
+      <span style="color:var(--amarillo);">&#11014; El primero de la lista sube automaticamente si se libera un cupo titular.</span>
+    </div>
+    <!-- headers reservas -->
+    <div class="reserva-row" style="border-bottom:2px solid var(--gris-border);padding-bottom:5px;">
+      <div class="reserva-num" style="font-size:.65rem;text-transform:uppercase;color:var(--texto-muted);">#</div>
+      <div style="font-size:.65rem;text-transform:uppercase;color:var(--texto-muted);">Nombre</div>
+      <div style="font-size:.65rem;text-transform:uppercase;color:var(--texto-muted);">RUT</div>
+      <div style="font-size:.65rem;text-transform:uppercase;color:var(--texto-muted);">Obs</div>
+      <div></div>
+    </div>
+    <div id="reservasList"></div>
+    <!-- Formulario agregar reserva -->
+    <div class="add-form" id="addReservaForm" style="display:none;">
+      <div class="form-group"><label>Nombre</label><input type="text" id="resNombre" placeholder="Nombre completo" maxlength="40"></div>
+      <div class="form-group"><label>RUT</label><input type="text" id="resRut" placeholder="12.345.678-9" maxlength="12"></div>
+      <div class="form-group"><label>Obs</label><input type="text" id="resObs" placeholder="Opcional" maxlength="60"></div>
+      <button class="btn btn-primary" onclick="agregarReserva()">+ Reserva</button>
     </div>
   </div>
+</div>
 
-  <!-- TAB ESTADISTICAS -->
-  <div class="tab-content" id="tab-estadisticas">
-    <div class="card">
-      <div class="card-title">&#127942; Resultado del Partido</div>
-      <div class="resultado-display">
-        <div class="equipo-score"><div class="equipo-name">LIWEN FC</div><div class="score-num score-home" id="scoreLocal">-</div></div>
-        <div class="score-vs">VS</div>
-        <div class="equipo-score"><div class="equipo-name" id="rivalNameDisplay">RIVAL</div><div class="score-num score-away" id="scoreVisita">-</div></div>
-      </div>
-      <div id="adminStatsCard" style="display:none;">
-        <div class="row-2col">
-          <div class="form-group"><label>Goles LIWEN FC</label><input type="number" id="inputLocal" min="0" placeholder="0"></div>
-          <div class="form-group"><label>Goles Rival</label><input type="number" id="inputVisita" min="0" placeholder="0"></div>
-        </div>
-        <button class="btn btn-primary" style="margin-top:10px;width:100%;" onclick="guardarResultado()">&#128190; Guardar Resultado</button>
-      </div>
+<!-- TAB CANCHA -->
+<div class="tab-content" id="tab-cancha">
+  <div class="card">
+    <div class="card-title">&#127967; Visualizacion 4-4-2</div>
+    <div class="cancha-with-bench">
+    <div class="campo-wrapper">
+      <svg class="campo-svg" viewBox="0 0 300 480" xmlns="http://www.w3.org/2000/svg">
+        <rect width="300" height="480" rx="4" fill="#1a3a1e"/>
+        <rect x="15" y="15" width="270" height="450" rx="2" fill="none" stroke="#2d6b35" stroke-width="2"/>
+        <line x1="15" y1="240" x2="285" y2="240" stroke="#2d6b35" stroke-width="1.5"/>
+        <circle cx="150" cy="240" r="40" fill="none" stroke="#2d6b35" stroke-width="1.5"/>
+        <circle cx="150" cy="240" r="3" fill="#2d6b35"/>
+        <rect x="75" y="15" width="150" height="65" fill="none" stroke="#2d6b35" stroke-width="1.5"/>
+        <rect x="110" y="15" width="80" height="28" fill="none" stroke="#2d6b35" stroke-width="1.5"/>
+        <rect x="75" y="400" width="150" height="65" fill="none" stroke="#2d6b35" stroke-width="1.5"/>
+        <rect x="110" y="437" width="80" height="28" fill="none" stroke="#2d6b35" stroke-width="1.5"/>
+        <rect x="115" y="13" width="70" height="8" rx="2" fill="#1a3a1e" stroke="#2d6b35" stroke-width="1.5"/>
+        <rect x="115" y="459" width="70" height="8" rx="2" fill="#1a3a1e" stroke="#2d6b35" stroke-width="1.5"/>
+        <path d="M 100,80 A 30,30 0 0,1 200,80" fill="none" stroke="#2d6b35" stroke-width="1.5"/>
+        <path d="M 100,400 A 30,30 0 0,0 200,400" fill="none" stroke="#2d6b35" stroke-width="1.5"/>
+        <g id="pos-0" opacity="0.2"><circle cx="150" cy="445" r="18" fill="#007A33" stroke="#00C853" stroke-width="2"/><text x="150" y="442" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-0">POR</text><text x="150" y="451" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-0"></text></g>
+        <g id="pos-1" opacity="0.2"><circle cx="55" cy="380" r="18" fill="#007A33" stroke="#00C853" stroke-width="2"/><text x="55" y="377" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-1">DEF</text><text x="55" y="386" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-1"></text></g>
+        <g id="pos-2" opacity="0.2"><circle cx="115" cy="380" r="18" fill="#007A33" stroke="#00C853" stroke-width="2"/><text x="115" y="377" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-2">DEF</text><text x="115" y="386" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-2"></text></g>
+        <g id="pos-3" opacity="0.2"><circle cx="185" cy="380" r="18" fill="#007A33" stroke="#00C853" stroke-width="2"/><text x="185" y="377" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-3">DEF</text><text x="185" y="386" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-3"></text></g>
+        <g id="pos-4" opacity="0.2"><circle cx="245" cy="380" r="18" fill="#007A33" stroke="#00C853" stroke-width="2"/><text x="245" y="377" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-4">DEF</text><text x="245" y="386" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-4"></text></g>
+        <g id="pos-5" opacity="0.2"><circle cx="55" cy="285" r="18" fill="#007A33" stroke="#00C853" stroke-width="2"/><text x="55" y="282" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-5">MED</text><text x="55" y="291" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-5"></text></g>
+        <g id="pos-6" opacity="0.2"><circle cx="115" cy="285" r="18" fill="#007A33" stroke="#00C853" stroke-width="2"/><text x="115" y="282" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-6">MED</text><text x="115" y="291" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-6"></text></g>
+        <g id="pos-7" opacity="0.2"><circle cx="185" cy="285" r="18" fill="#007A33" stroke="#00C853" stroke-width="2"/><text x="185" y="282" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-7">MED</text><text x="185" y="291" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-7"></text></g>
+        <g id="pos-8" opacity="0.2"><circle cx="245" cy="285" r="18" fill="#007A33" stroke="#00C853" stroke-width="2"/><text x="245" y="282" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-8">MED</text><text x="245" y="291" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-8"></text></g>
+        <g id="pos-9" opacity="0.2"><circle cx="105" cy="180" r="18" fill="#007A33" stroke="#00C853" stroke-width="2"/><text x="105" y="177" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-9">DEL</text><text x="105" y="186" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-9"></text></g>
+        <g id="pos-10" opacity="0.2"><circle cx="195" cy="180" r="18" fill="#007A33" stroke="#00C853" stroke-width="2"/><text x="195" y="177" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-10">DEL</text><text x="195" y="186" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-10"></text></g>
+        <g id="pos-11" opacity="0.15"><circle cx="150" cy="35" r="18" fill="#7A0000" stroke="#FF3D3D" stroke-width="2"/><text x="150" y="32" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-11">POR</text><text x="150" y="41" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-11"></text></g>
+        <g id="pos-12" opacity="0.15"><circle cx="55" cy="100" r="18" fill="#7A0000" stroke="#FF3D3D" stroke-width="2"/><text x="55" y="97" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-12">DEF</text><text x="55" y="106" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-12"></text></g>
+        <g id="pos-13" opacity="0.15"><circle cx="115" cy="100" r="18" fill="#7A0000" stroke="#FF3D3D" stroke-width="2"/><text x="115" y="97" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-13">DEF</text><text x="115" y="106" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-13"></text></g>
+        <g id="pos-14" opacity="0.15"><circle cx="185" cy="100" r="18" fill="#7A0000" stroke="#FF3D3D" stroke-width="2"/><text x="185" y="97" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-14">DEF</text><text x="185" y="106" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-14"></text></g>
+        <g id="pos-15" opacity="0.15"><circle cx="245" cy="100" r="18" fill="#7A0000" stroke="#FF3D3D" stroke-width="2"/><text x="245" y="97" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-15">DEF</text><text x="245" y="106" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-15"></text></g>
+        <g id="pos-16" opacity="0.15"><circle cx="55" cy="195" r="18" fill="#7A0000" stroke="#FF3D3D" stroke-width="2"/><text x="55" y="192" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-16">MED</text><text x="55" y="201" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-16"></text></g>
+        <g id="pos-17" opacity="0.15"><circle cx="115" cy="195" r="18" fill="#7A0000" stroke="#FF3D3D" stroke-width="2"/><text x="115" y="192" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-17">MED</text><text x="115" y="201" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-17"></text></g>
+        <g id="pos-18" opacity="0.15"><circle cx="185" cy="195" r="18" fill="#7A0000" stroke="#FF3D3D" stroke-width="2"/><text x="185" y="192" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-18">MED</text><text x="185" y="201" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-18"></text></g>
+        <g id="pos-19" opacity="0.15"><circle cx="245" cy="195" r="18" fill="#7A0000" stroke="#FF3D3D" stroke-width="2"/><text x="245" y="192" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-19">MED</text><text x="245" y="201" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-19"></text></g>
+        <g id="pos-20" opacity="0.15"><circle cx="105" cy="305" r="18" fill="#7A0000" stroke="#FF3D3D" stroke-width="2"/><text x="105" y="302" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-20">DEL</text><text x="105" y="311" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-20"></text></g>
+        <g id="pos-21" opacity="0.15"><circle cx="195" cy="305" r="18" fill="#7A0000" stroke="#FF3D3D" stroke-width="2"/><text x="195" y="302" text-anchor="middle" font-size="6.5" fill="white" font-family="Barlow,sans-serif" font-weight="700" id="posname-21">DEL</text><text x="195" y="311" text-anchor="middle" font-size="5" fill="#aaa" font-family="Barlow,sans-serif" id="possub-21"></text></g>
+        <text x="150" y="468" text-anchor="middle" font-size="5.5" fill="#00C853" opacity="0.5" font-family="Bebas Neue,sans-serif" letter-spacing="2">LIWEN FC</text>
+        <text x="150" y="22" text-anchor="middle" font-size="5.5" fill="#FF3D3D" opacity="0.5" font-family="Bebas Neue,sans-serif" letter-spacing="2" id="rivalLabel">RIVAL</text>
+      </svg>
     </div>
-    <div class="card">
-      <div class="card-title">&#128176; Estado de Pagos</div>
-      <div class="stats-row stats-header"><div class="stats-num">#</div><div>Jugador</div><div class="stats-rut">RUT</div><div>Pago</div><div>Tipo</div></div>
-      <div id="statsPayList"></div>
+    </div><!-- end campo-wrapper -->
+    <div class="bench-sidebar">
+      <div class="bench-title">&#128203; Banca</div>
+      <div id="benchList"></div>
     </div>
-    <div class="card" id="adminReservasJugaronCard" style="display:none;">
-      <div class="card-title">&#128203; Reservas &mdash; Quien jugo?</div>
-      <p style="font-size:.8rem;color:var(--texto-muted);margin-bottom:1rem;">Marca que reservas participaron. Apareceran en la lista de deudores.</p>
-      <div id="reservasJugaronList"></div>
+    </div><!-- end cancha-with-bench -->
+    <p style="text-align:center;font-size:.72rem;color:var(--texto-muted);margin-top:6px;">Verde = LIWEN FC &middot; Rojo = <span id="canchaRivalName">Rival</span></p>
+  </div>
+</div>
+
+
+
+<!-- TAB DEUDORES -->
+<div class="tab-content" id="tab-deudores">
+  <div class="card">
+    <div class="card-title">&#9888; Lista de Deudores</div>
+    <div style="background:var(--gris-mid);border-radius:8px;padding:10px 14px;margin-bottom:1rem;font-size:.8rem;color:var(--texto-muted);line-height:1.6;">
+      <span style="color:var(--verde);">&#9632;</span> Titulares &nbsp;&middot;&nbsp; <span style="color:var(--amarillo);">&#9632;</span> Reservas que jugaron &nbsp;&middot;&nbsp; <span style="color:var(--rojo);">&#9632;</span> Eliminados dentro de 8h
+    </div>
+    <div class="deudores-list" id="deudoresList"><div class="empty-state"><div class="empty-icon">&#9989;</div><p>Sin deudores</p></div></div>
+  </div>
+</div>
+
+<!-- TAB ESTADISTICAS -->
+<div class="tab-content" id="tab-estadisticas">
+  <div class="card">
+    <div class="card-title">&#127942; Resultado del Partido</div>
+    <div class="resultado-display">
+      <div class="equipo-score"><div class="equipo-name">LIWEN FC</div><div class="score-num score-home" id="scoreLocal">-</div></div>
+      <div class="score-vs">VS</div>
+      <div class="equipo-score"><div class="equipo-name" id="rivalNameDisplay">RIVAL</div><div class="score-num score-away" id="scoreVisita">-</div></div>
+    </div>
+    <div id="adminStatsCard" style="display:none;">
+      <div class="row-2col">
+        <div class="form-group"><label>Goles LIWEN FC</label><input type="number" id="inputLocal" min="0" placeholder="0"></div>
+        <div class="form-group"><label>Goles Rival</label><input type="number" id="inputVisita" min="0" placeholder="0"></div>
+      </div>
+      <button class="btn btn-primary" style="margin-top:10px;width:100%;" onclick="guardarResultado()">&#128190; Guardar y archivar partido</button>
     </div>
   </div>
+  <div class="card">
+    <div class="card-title">&#128176; Estado de Pagos</div>
+    <div class="stats-row stats-header"><div class="stats-num">#</div><div>Jugador</div><div class="stats-rut">RUT</div><div>Pago</div><div>Tipo</div></div>
+    <div id="statsPayList"></div>
+  </div>
+  <div class="card" id="adminReservasJugaronCard" style="display:none;">
+    <div class="card-title">&#128203; Reservas &mdash; Quien jugo?</div>
+    <p style="font-size:.8rem;color:var(--texto-muted);margin-bottom:1rem;">Marca que reservas participaron. Apareceran en deudores.</p>
+    <div id="reservasJugaronList"></div>
+  </div>
+</div>
+
+<!-- TAB VOTACION MVP -->
+<div class="tab-content" id="tab-votacion">
+  <div class="card">
+    <div class="card-title">&#11088; Voto: Jugador del Partido</div>
+    <p style="font-size:.82rem;color:var(--texto-muted);margin-bottom:1rem;">Cada jugador puede votar una sola vez con su RUT. La votacion cierra cuando el admin archive el partido.</p>
+    <div id="votoYaEmitido" style="display:none;background:rgba(0,200,83,.08);border:1px solid rgba(0,200,83,.3);border-radius:8px;padding:12px;text-align:center;margin-bottom:1rem;font-size:.88rem;color:var(--verde);">&#9989; Ya emitiste tu voto para este partido.</div>
+    <div id="votoForm">
+      <div class="vote-rut-form">
+        <div class="form-group"><label>Tu RUT (para verificar que eres jugador)</label><input type="text" id="votoRut" placeholder="12.345.678-9" maxlength="12"></div>
+        <div style="display:flex;flex-direction:column;gap:4px;"><label style="font-size:.72rem;text-transform:uppercase;letter-spacing:1px;color:var(--texto-muted);">&nbsp;</label><button class="btn btn-primary" onclick="verificarVotante()">Verificar</button></div>
+      </div>
+      <div id="votoJugadoresWrap" style="display:none;">
+        <p style="font-size:.82rem;color:var(--texto-muted);margin-bottom:.75rem;">Selecciona al mejor jugador del partido:</p>
+        <div class="vote-grid" id="voteGrid"></div>
+        <div style="margin-top:1rem;display:flex;gap:8px;">
+          <button class="btn btn-secondary" onclick="cancelarVoto()">Cancelar</button>
+          <button class="btn btn-primary" style="flex:1;" onclick="emitirVoto()">&#11088; Confirmar voto</button>
+        </div>
+      </div>
+    </div>
+    <div id="votoResultados" style="margin-top:1.5rem;">
+      <div style="font-size:.75rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--texto-muted);margin-bottom:.75rem;">Resultados actuales</div>
+      <div id="voteResultsGrid" class="vote-grid"></div>
+    </div>
+  </div>
+  <div class="card" id="adminVotacionCard" style="display:none;">
+    <div class="card-title">&#9881; Admin &mdash; Votacion</div>
+    <button class="btn btn-warning" style="width:100%;" onclick="resetearVotacion()">&#8635; Reiniciar votacion de este partido</button>
+  </div>
+</div>
+
+<!-- TAB NIVELES -->
+<div class="tab-content" id="tab-niveles">
+  <div class="card" id="adminNivelesCard" style="display:none;">
+    <div class="card-title">&#9878; Asignar Niveles (0-100)</div>
+    <p style="font-size:.82rem;color:var(--texto-muted);margin-bottom:1rem;">Asigna un nivel a cada jugador para generar equipos equilibrados.</p>
+    <div id="nivelesAdminList"></div>
+    <button class="btn btn-primary" style="margin-top:1rem;width:100%;" onclick="guardarNiveles()">&#128190; Guardar Niveles</button>
+  </div>
+  <div class="card">
+    <div class="card-title">&#9878; Niveles de Jugadores</div>
+    <div id="nivelesList"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">&#9878;&#65039; Equipos Equilibrados</div>
+    <p style="font-size:.82rem;color:var(--texto-muted);margin-bottom:1rem;" id="equiposDesc">Genera equipos balanceados basados en los niveles asignados.</p>
+    <button class="btn btn-primary" onclick="generarEquipos()">&#9878; Proponer Equipos</button>
+    <div id="equiposResult" style="margin-top:1rem;"></div>
+  </div>
+</div>
+
+<!-- TAB HISTORIAL -->
+<div class="tab-content" id="tab-historial">
+  <div class="row-2col" style="margin-bottom:1rem;">
+    <div class="card" style="margin-bottom:0;">
+      <div class="card-title">&#127942; Ranking MVP</div>
+      <div id="rankingMvp"></div>
+    </div>
+    <div class="card" style="margin-bottom:0;">
+      <div class="card-title">&#128202; Estadisticas</div>
+      <div id="statsGlobales"></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">&#128218; Partidos Jugados</div>
+    <div id="historialList"><div class="empty-state"><div class="empty-icon">&#128218;</div><p>Sin partidos archivados aun</p></div></div>
+  </div>
+</div>
+
 </main>
 
-<!-- MODAL LOGIN -->
+<!-- MODALS -->
 <div class="modal-overlay" id="loginModal">
   <div class="modal">
     <div class="modal-title">&#128272; Acceso Admin</div>
@@ -441,11 +618,9 @@ main{max-width:1100px;margin:0 auto;padding:1.5rem;position:relative;z-index:1;}
     </div>
   </div>
 </div>
-
-<!-- MODAL DELETE -->
 <div class="modal-overlay" id="deleteModal">
   <div class="modal">
-    <div class="modal-title" style="color:var(--rojo);">Eliminar jugador</div>
+    <div class="modal-title" style="color:var(--rojo);">Eliminar</div>
     <p style="text-align:center;color:var(--texto-muted);font-size:.9rem;" id="deleteMsg">Seguro?</p>
     <div id="deleteInfoBox" style="display:none;background:var(--gris-mid);border-radius:8px;padding:10px 14px;margin-top:10px;font-size:.82rem;line-height:1.5;"></div>
     <div class="modal-actions">
@@ -454,36 +629,55 @@ main{max-width:1100px;margin:0 auto;padding:1.5rem;position:relative;z-index:1;}
     </div>
   </div>
 </div>
-
 <div class="toast" id="toast"></div>
 
 <script>
-const DEFAULT_STATE={partido:{tipo:'',rivalNombre:'',fecha:'',hora:'',lugar:''},jugadores:[],reservas:[],eliminadosTarde:[],resultado:{local:'',visita:''},pagos:{},sheetsUrl:''};
+// ============================================================
+// STATE
+// ============================================================
+const SHEETS_URL='https://script.google.com/macros/s/AKfycbxW26uj23lVrpQ_D2HU18s2Vypydkaqa8xYsUqn2sVCXM7F47dIDMiJObarmqX5UA_p/exec';
+const DEFAULT_STATE={
+  partido:{tipo:'',rivalNombre:'',fecha:'',hora:'',lugar:'',cancelado:false,motivoCancelacion:''},
+  jugadores:[],reservas:[],eliminadosTarde:[],
+  resultado:{local:'',visita:''},pagos:{},
+  votos:{},votantes:{}, // votantes: {rut: partidoId}
+  niveles:{},           // {jugadorNombre: 0-100}
+  historial:[],         // array de partidos archivados
+  sheetsUrl:SHEETS_URL
+};
 let state=JSON.parse(JSON.stringify(DEFAULT_STATE));
 const ADMIN_PASS='liwen2024';
 let isAdmin=false,deleteTarget=null,cdInterval=null;
+let votoRutVerificado=null,votoSeleccionado=null;
 
 function cuposMax(){return state.partido.tipo==='externo'?11:22;}
 function listaLlena(){return state.jugadores.length>=cuposMax();}
+function partidoId(){return state.partido.fecha+'_'+state.partido.hora;}
 
+// ============================================================
+// INIT
+// ============================================================
 function init(){
   try{
-    const s=localStorage.getItem('liwenfc_v2');
+    const s=localStorage.getItem('liwenfc_v3');
     if(s){
       const p=JSON.parse(s);
       state={...DEFAULT_STATE,...p};
-      ['jugadores','reservas','eliminadosTarde'].forEach(k=>{if(!Array.isArray(state[k]))state[k]=[];});
-      if(!state.pagos)state.pagos={};
-      if(!state.partido)state.partido={tipo:'',rivalNombre:'',fecha:'',hora:'',lugar:''};
+      ['jugadores','reservas','eliminadosTarde','historial'].forEach(k=>{if(!Array.isArray(state[k]))state[k]=[];});
+      ['pagos','votos','votantes','niveles'].forEach(k=>{if(typeof state[k]!=='object'||Array.isArray(state[k]))state[k]={};});
+      if(!state.partido)state.partido={tipo:'',rivalNombre:'',fecha:'',hora:'',lugar:'',cancelado:false,motivoCancelacion:''};
+      if(state.partido.cancelado===undefined)state.partido.cancelado=false;
       if(!state.resultado)state.resultado={local:'',visita:''};
+      if(!state.sheetsUrl)state.sheetsUrl=SHEETS_URL;
     }
   }catch(e){}
-  renderAll();
-  startCountdown();
-  updateSheetsStatus();
+  renderAll();startCountdown();updateSheetsStatus();
 }
-function saveState(){localStorage.setItem('liwenfc_v2',JSON.stringify(state));}
+function saveState(){localStorage.setItem('liwenfc_v3',JSON.stringify(state));}
 
+// ============================================================
+// TABS
+// ============================================================
 function showTab(name,el){
   document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
@@ -492,12 +686,15 @@ function showTab(name,el){
   renderAll();
 }
 
+// ============================================================
+// ADMIN
+// ============================================================
 function toggleAdmin(){
   if(isAdmin){
     isAdmin=false;
-    document.getElementById('adminBtn').textContent='&#128274; Admin';
+    document.getElementById('adminBtn').innerHTML='&#128274; Admin';
     document.getElementById('adminBtn').classList.remove('logged');
-    ['adminPartidoCard','adminStatsCard','adminReservasJugaronCard'].forEach(id=>document.getElementById(id).style.display='none');
+    ['adminPartidoCard','adminStatsCard','adminReservasJugaronCard','adminVotacionCard','adminNivelesCard'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none';});
     showToast('Sesion cerrada');
   }else{
     openModal('loginModal');
@@ -511,23 +708,21 @@ function checkPassword(){
     document.getElementById('adminBtn').classList.add('logged');
     closeModal('loginModal');
     document.getElementById('passwordInput').value='';
-    ['adminPartidoCard','adminStatsCard','adminReservasJugaronCard'].forEach(id=>document.getElementById(id).style.display='block');
-    renderAll();
-    showToast('Modo admin activado');
-  }else{
-    showToast('Contrasena incorrecta',true);
-    document.getElementById('passwordInput').value='';
-    document.getElementById('passwordInput').focus();
-  }
+    ['adminPartidoCard','adminStatsCard','adminReservasJugaronCard','adminVotacionCard','adminNivelesCard'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='block';});
+    renderAll();showToast('Modo admin activado');
+  }else{showToast('Contrasena incorrecta',true);document.getElementById('passwordInput').value='';document.getElementById('passwordInput').focus();}
 }
 function openModal(id){document.getElementById(id).classList.add('active');}
 function closeModal(id){document.getElementById(id).classList.remove('active');}
 function showToast(msg,err=false){
-  const t=document.getElementById('toast');
-  t.textContent=msg;t.className='toast show'+(err?' error':'');
+  const t=document.getElementById('toast');t.textContent=msg;
+  t.className='toast show'+(err?' error':'');
   setTimeout(()=>t.classList.remove('show'),3000);
 }
 
+// ============================================================
+// TIPO PARTIDO
+// ============================================================
 function seleccionarTipo(tipo){
   state.partido.tipo=tipo;
   document.getElementById('tipoInterno').classList.toggle('selected',tipo==='interno');
@@ -535,6 +730,9 @@ function seleccionarTipo(tipo){
   document.getElementById('rivalNameGroup').style.display=tipo==='externo'?'block':'none';
 }
 
+// ============================================================
+// PARTIDO - GUARDAR / CANCELAR / REACTIVAR
+// ============================================================
 function guardarPartido(){
   const tipo=state.partido.tipo;
   const fecha=document.getElementById('inputFecha').value;
@@ -544,30 +742,64 @@ function guardarPartido(){
   if(!tipo){showToast('Elige el tipo de partido',true);return;}
   if(!fecha||!hora){showToast('Ingresa fecha y hora',true);return;}
   if(tipo==='externo'&&!rival){showToast('Ingresa el nombre del rival',true);return;}
-  state.partido={tipo,rivalNombre:rival,fecha,hora,lugar};
+  state.partido={...state.partido,tipo,rivalNombre:rival,fecha,hora,lugar,cancelado:false,motivoCancelacion:''};
   saveState();renderAll();startCountdown();
   showToast('Partido guardado');syncSheets(true);
 }
 
+function cancelarPartido(){
+  const motivo=document.getElementById('inputMotivoCancelacion').value.trim();
+  if(!motivo){showToast('Escribe el motivo de cancelacion',true);return;}
+  if(!state.partido.fecha){showToast('No hay partido configurado',true);return;}
+  state.partido.cancelado=true;
+  state.partido.motivoCancelacion=motivo;
+  saveState();renderAll();
+  showToast('Partido cancelado');syncSheets(true);
+}
+
+function reactivarPartido(){
+  state.partido.cancelado=false;
+  state.partido.motivoCancelacion='';
+  document.getElementById('inputMotivoCancelacion').value='';
+  saveState();renderAll();startCountdown();
+  showToast('Partido reactivado');
+}
+
+// ============================================================
+// RENDER PARTIDO BANNER + CANCELADO
+// ============================================================
 function renderPartidoBanner(){
-  const{tipo,rivalNombre,fecha,hora,lugar}=state.partido;
-  const badge=document.getElementById('matchupTypeBadge');
-  const teams=document.getElementById('matchupTeams');
-  const meta=document.getElementById('matchupMeta');
+  const{tipo,rivalNombre,fecha,hora,lugar,cancelado,motivoCancelacion}=state.partido;
+
+  // Cancelado banner
+  const cb=document.getElementById('canceladoBanner');
+  if(cancelado&&fecha){
+    cb.style.display='block';
+    cb.innerHTML=`<div class="cancelado-banner"><div class="cancelado-title">&#128683; PARTIDO CANCELADO</div><div class="cancelado-motivo"><strong>Motivo:</strong> ${esc(motivoCancelacion)}</div></div>`;
+    document.getElementById('countdownContainer').style.display='none';
+  }else{
+    cb.style.display='none';
+    document.getElementById('countdownContainer').style.display='block';
+  }
+
+  // Reactivar btn
+  if(isAdmin){const br=document.getElementById('btnReactivar');if(br)br.style.display=cancelado?'block':'none';}
+
   if(!tipo){
-    badge.className='matchup-type-badge';badge.textContent='Sin partido configurado';
-    teams.innerHTML='<div style="font-family:\'Bebas Neue\',sans-serif;font-size:1.2rem;color:var(--texto-muted);letter-spacing:2px;">El encargado aun no ha configurado el partido</div>';
-    meta.style.display='none';
+    document.getElementById('matchupTypeBadge').className='matchup-type-badge';
+    document.getElementById('matchupTypeBadge').textContent='Sin partido configurado';
+    document.getElementById('matchupTeams').innerHTML='<div style="font-family:\'Bebas Neue\',sans-serif;font-size:1.1rem;color:var(--texto-muted);letter-spacing:2px;">El encargado aun no ha configurado el partido</div>';
+    document.getElementById('matchupMeta').style.display='none';
     document.getElementById('rivalNameDisplay').textContent='RIVAL';
     document.getElementById('rivalLabel').textContent='RIVAL';
     document.getElementById('canchaRivalName').textContent='Rival';
     return;
   }
   const awayName=tipo==='interno'?'LIWEN FC':(rivalNombre||'RIVAL').toUpperCase();
-  badge.className='matchup-type-badge '+tipo;
-  badge.textContent=tipo==='interno'?'Partido Interno':'Partido Externo';
-  teams.innerHTML=`<div class="matchup-team"><div class="matchup-team-name home">LIWEN FC</div></div><div class="matchup-vs">VS</div><div class="matchup-team"><div class="matchup-team-name away">${esc(awayName)}</div></div>`;
-  meta.style.display='flex';
+  document.getElementById('matchupTypeBadge').className='matchup-type-badge '+tipo;
+  document.getElementById('matchupTypeBadge').textContent=tipo==='interno'?'Partido Interno':'Partido Externo';
+  document.getElementById('matchupTeams').innerHTML=`<div class="matchup-team"><div class="matchup-team-name home">LIWEN FC</div></div><div class="matchup-vs">VS</div><div class="matchup-team"><div class="matchup-team-name away">${esc(awayName)}</div></div>`;
+  document.getElementById('matchupMeta').style.display='flex';
   document.getElementById('metaFecha').textContent=fecha?new Date(fecha+'T12:00:00').toLocaleDateString('es-CL',{weekday:'short',day:'numeric',month:'long'}):'—';
   document.getElementById('metaHora').textContent=hora||'—';
   document.getElementById('metaLugar').textContent=lugar||'—';
@@ -575,42 +807,46 @@ function renderPartidoBanner(){
   document.getElementById('rivalNameDisplay').textContent=awayName;
   document.getElementById('rivalLabel').textContent=awayName;
   document.getElementById('canchaRivalName').textContent=awayName;
-  document.getElementById('inputFecha').value=fecha||'';
-  document.getElementById('inputHora').value=hora||'';
-  document.getElementById('inputLugar').value=lugar||'';
-  document.getElementById('inputRivalNombre').value=rivalNombre||'';
-  seleccionarTipo(tipo);
+  if(isAdmin){
+    document.getElementById('inputFecha').value=fecha||'';
+    document.getElementById('inputHora').value=hora||'';
+    document.getElementById('inputLugar').value=lugar||'';
+    document.getElementById('inputRivalNombre').value=rivalNombre||'';
+    seleccionarTipo(tipo);
+    document.getElementById('inputMotivoCancelacion').value=motivoCancelacion||'';
+    const br=document.getElementById('btnReactivar');
+    if(br)br.style.display=cancelado?'block':'none';
+  }
 }
 
+// ============================================================
+// COUNTDOWN
+// ============================================================
 function startCountdown(){
   if(cdInterval)clearInterval(cdInterval);
-  cdInterval=setInterval(updateCountdown,1000);
-  updateCountdown();
+  cdInterval=setInterval(updateCountdown,1000);updateCountdown();
 }
 function updateCountdown(){
-  const{fecha,hora}=state.partido;
+  const{fecha,hora,cancelado}=state.partido;
+  if(cancelado){return;}
   if(!fecha||!hora){['cdDias','cdHoras','cdMins','cdSegs'].forEach(id=>document.getElementById(id).textContent='--');document.getElementById('cdWarning').innerHTML='';return;}
   const diff=new Date(fecha+'T'+hora+':00')-new Date();
   if(diff<=0){['cdDias','cdHoras','cdMins','cdSegs'].forEach(id=>document.getElementById(id).textContent='00');document.getElementById('cdWarning').innerHTML='<div class="countdown-warning">El partido esta en curso o ya termino!</div>';return;}
   const d=Math.floor(diff/864e5),h=Math.floor((diff%864e5)/36e5),m=Math.floor((diff%36e5)/6e4),s=Math.floor((diff%6e4)/1e3);
-  document.getElementById('cdDias').textContent=pad(d);
-  document.getElementById('cdHoras').textContent=pad(h);
-  document.getElementById('cdMins').textContent=pad(m);
-  document.getElementById('cdSegs').textContent=pad(s);
+  document.getElementById('cdDias').textContent=pad(d);document.getElementById('cdHoras').textContent=pad(h);
+  document.getElementById('cdMins').textContent=pad(m);document.getElementById('cdSegs').textContent=pad(s);
   const hrs=diff/36e5;
-  if(hrs<=8){
-    document.getElementById('cdWarning').innerHTML='<div class="countdown-warning">Menos de 8 horas &mdash; eliminaciones = deudores</div>';
-    ['cdHoras','cdMins','cdSegs'].forEach(id=>document.getElementById(id).style.color='var(--rojo)');
-  }else{
-    document.getElementById('cdWarning').innerHTML='';
-    ['cdDias','cdHoras','cdMins','cdSegs'].forEach(id=>document.getElementById(id).style.color='');
-  }
+  if(hrs<=8){document.getElementById('cdWarning').innerHTML='<div class="countdown-warning">Menos de 8 horas &mdash; eliminaciones = deudores</div>';['cdHoras','cdMins','cdSegs'].forEach(id=>document.getElementById(id).style.color='var(--rojo)');}
+  else{document.getElementById('cdWarning').innerHTML='';['cdDias','cdHoras','cdMins','cdSegs'].forEach(id=>document.getElementById(id).style.color='');}
 }
 function isWithin8Hours(){
   const{fecha,hora}=state.partido;if(!fecha||!hora)return false;
   const diff=new Date(fecha+'T'+hora+':00')-new Date();return diff>0&&diff<=28800000;
 }
 
+// ============================================================
+// JUGADORES
+// ============================================================
 function agregarJugador(){
   if(listaLlena()){showToast('Lista llena. Agrega reservas.',true);return;}
   const nombre=document.getElementById('newNombre').value.trim();
@@ -618,57 +854,45 @@ function agregarJugador(){
   const obs=document.getElementById('newObs').value.trim();
   if(!nombre){showToast('Ingresa el nombre',true);return;}
   state.jugadores.push({id:Date.now(),nombre,rut,obs,timestamp:new Date().toISOString(),ascendidoDeReserva:false});
-  document.getElementById('newNombre').value='';
-  document.getElementById('newRut').value='';
-  document.getElementById('newObs').value='';
+  document.getElementById('newNombre').value='';document.getElementById('newRut').value='';document.getElementById('newObs').value='';
   saveState();renderAll();syncSheets(true);showToast(nombre+' inscrito');
 }
-
 function solicitarEliminar(tipo,id){
   deleteTarget={tipo,id};
   const lista=tipo==='jugador'?state.jugadores:state.reservas;
   const j=lista.find(x=>x.id===id);if(!j)return;
   document.getElementById('deleteMsg').textContent='Eliminar a '+j.nombre+'?';
-  const box=document.getElementById('deleteInfoBox');
-  const msgs=[];
+  const box=document.getElementById('deleteInfoBox');const msgs=[];
   if(tipo==='jugador'&&isWithin8Hours())msgs.push('Faltan menos de 8h: quedara como <strong>deudor</strong>.');
-  if(tipo==='jugador'&&state.reservas.length>0)msgs.push('<strong>'+esc(state.reservas[0].nombre)+'</strong> (1 reserva) subira automaticamente.');
-  if(msgs.length){box.innerHTML=msgs.join('<br>');box.style.display='block';}
-  else box.style.display='none';
+  if(tipo==='jugador'&&state.reservas.length>0)msgs.push('<strong>'+esc(state.reservas[0].nombre)+'</strong> subira automaticamente.');
+  if(msgs.length){box.innerHTML=msgs.join('<br>');box.style.display='block';}else box.style.display='none';
   openModal('deleteModal');
 }
-
 function confirmDelete(){
   if(!deleteTarget)return;
-  const{tipo,id}=deleteTarget;
-  closeModal('deleteModal');deleteTarget=null;
+  const{tipo,id}=deleteTarget;closeModal('deleteModal');deleteTarget=null;
   if(tipo==='jugador'){
     const j=state.jugadores.find(x=>x.id===id);if(!j)return;
     if(isWithin8Hours())state.eliminadosTarde.push({...j,eliminadoEn:new Date().toISOString()});
     state.jugadores=state.jugadores.filter(x=>x.id!==id);
-    if(state.reservas.length>0){
-      const prox=state.reservas.shift();
-      prox.ascendidoDeReserva=true;
-      state.jugadores.push(prox);
-      showToast(prox.nombre+' ascendido de reservas');
-    }else{showToast('Jugador eliminado');}
-  }else{
-    state.reservas=state.reservas.filter(x=>x.id!==id);
-    showToast('Reserva eliminada');
-  }
+    if(state.reservas.length>0){const prox=state.reservas.shift();prox.ascendidoDeReserva=true;state.jugadores.push(prox);showToast(prox.nombre+' ascendido de reservas');}
+    else showToast('Jugador eliminado');
+  }else{state.reservas=state.reservas.filter(x=>x.id!==id);showToast('Reserva eliminada');}
   saveState();renderAll();syncSheets(true);
 }
-
 function renderJugadores(){
   const list=document.getElementById('jugadoresList');
   const max=cuposMax();
   if(state.jugadores.length===0){
     list.innerHTML='<div class="empty-state"><div class="empty-icon">&#128101;</div><p>Aun no hay jugadores inscritos</p></div>';
-  }else{
+  } else {
     list.innerHTML=state.jugadores.map((j,i)=>`
-      <div class="jugador-row">
+      <div class="jugador-row ${j.ascendidoDeReserva?'row-ascendido':''}">
         <div class="jugador-num">${i+1}</div>
-        <div class="jugador-name">${esc(j.nombre)}${j.ascendidoDeReserva?'<span class="ascendido-tag">reserva</span>':''}</div>
+        <div class="jugador-name">
+          ${esc(j.nombre)}
+          ${j.ascendidoDeReserva?'<span class="ascendido-tag">&#11014; reserva</span>':''}
+        </div>
         <div class="jugador-rut">${esc(j.rut||'—')}</div>
         <div class="jugador-obs">${esc(j.obs||'')}</div>
         <button class="btn btn-danger btn-small" onclick="solicitarEliminar('jugador',${j.id})">&#10005;</button>
@@ -678,88 +902,108 @@ function renderJugadores(){
   document.getElementById('addJugadorForm').style.display=llena?'none':'grid';
   document.getElementById('listaLlenaMsg').style.display=llena?'block':'none';
   document.getElementById('jugadoresCounter').textContent=state.jugadores.length+'/'+max;
+  // also update reservas panel
+  renderReservas();
 }
 
+// ============================================================
+// RESERVAS
+// ============================================================
 function agregarReserva(){
-  const nombre=document.getElementById('resNombre').value.trim();
-  const rut=document.getElementById('resRut').value.trim();
-  const obs=document.getElementById('resObs').value.trim();
+  const nombre=document.getElementById('resNombre').value.trim();const rut=document.getElementById('resRut').value.trim();const obs=document.getElementById('resObs').value.trim();
   if(!nombre){showToast('Ingresa el nombre',true);return;}
   state.reservas.push({id:Date.now(),nombre,rut,obs,timestamp:new Date().toISOString(),jugo:false});
-  document.getElementById('resNombre').value='';
-  document.getElementById('resRut').value='';
-  document.getElementById('resObs').value='';
-  saveState();renderReservas();renderDeudores();renderStats();syncSheets(true);
-  showToast(nombre+' en reservas');
+  document.getElementById('resNombre').value='';document.getElementById('resRut').value='';document.getElementById('resObs').value='';
+  saveState();renderReservas();renderDeudores();renderStats();syncSheets(true);showToast(nombre+' en reservas');
 }
-
 function renderReservas(){
   const llena=listaLlena();
-  document.getElementById('listaNoLlena').style.display=llena?'none':'block';
-  document.getElementById('reservasContent').style.display=llena?'block':'none';
-  document.getElementById('reservasCounter').textContent=state.reservas.length+' reservas';
-  if(!llena)return;
+  const lockMsg=document.getElementById('reservasLockMsg');
+  const addForm=document.getElementById('addReservaForm');
+  const counter=document.getElementById('reservasCounter');
+  if(counter) counter.textContent=state.reservas.length+(state.reservas.length===1?' reserva':' reservas');
+
+  // Show/hide lock message and add form
+  if(lockMsg) lockMsg.style.display=llena?'none':'block';
+  if(addForm) addForm.style.display=llena?'grid':'none';
+
   const list=document.getElementById('reservasList');
-  if(state.reservas.length===0){list.innerHTML='<div style="padding:1rem 0;color:var(--texto-muted);text-align:center;font-size:.85rem;">Sin reservas aun</div>';return;}
+  if(!list) return;
+  if(state.reservas.length===0){
+    list.innerHTML=`<div style="padding:.75rem 0;color:var(--texto-muted);text-align:center;font-size:.85rem;">${llena?'Sin reservas aun — agrega con el formulario de abajo':'Aun no hay cupos completos'}</div>`;
+    return;
+  }
   list.innerHTML=state.reservas.map((r,i)=>`
-    <div class="reserva-row ${i===0?'reserva-primero':''}">
-      <div class="reserva-num">${i===0?'&#11014;':'R'+(i+1)}</div>
-      <div class="jugador-name">${esc(r.nombre)}${i===0?' <span style="font-size:.68rem;color:var(--amarillo);">(proximo en subir)</span>':''}</div>
+    <div class="reserva-row ${i===0&&llena?'reserva-primero':''}">
+      <div class="reserva-num">${i===0&&llena?'&#11014;':'R'+(i+1)}</div>
+      <div class="jugador-name">
+        ${esc(r.nombre)}
+        ${i===0&&llena?'<span style="font-size:.68rem;color:var(--amarillo);margin-left:4px;">(proximo en subir)</span>':''}
+      </div>
       <div class="jugador-rut">${esc(r.rut||'—')}</div>
       <div class="jugador-obs">${esc(r.obs||'')}</div>
       <button class="btn btn-danger btn-small" onclick="solicitarEliminar('reserva',${r.id})">&#10005;</button>
     </div>`).join('');
 }
 
+// ============================================================
+// DEUDORES
+// ============================================================
 function getDeudoresList(){
-  return[
-    ...state.jugadores.map(j=>({...j,categoria:'titular'})),
-    ...state.eliminadosTarde.map(j=>({...j,categoria:'eliminado'})),
-    ...state.reservas.filter(r=>r.jugo).map(r=>({...r,categoria:'reserva_jugo'}))
-  ];
+  return[...state.jugadores.map(j=>({...j,categoria:'titular'})),...state.eliminadosTarde.map(j=>({...j,categoria:'eliminado'})),...state.reservas.filter(r=>r.jugo).map(r=>({...r,categoria:'reserva_jugo'}))];
 }
-
 function renderDeudores(){
-  const list=document.getElementById('deudoresList');
-  const todos=getDeudoresList();
+  const list=document.getElementById('deudoresList');const todos=getDeudoresList();
   if(todos.length===0){list.innerHTML='<div class="empty-state"><div class="empty-icon">&#9989;</div><p>Sin deudores</p></div>';return;}
   list.innerHTML=todos.map(j=>{
     let tc='',tt='',nc='',ic='jugado';
     if(j.categoria==='titular'){tc='tag-titular';tt='TITULAR';nc='var(--verde)';ic='jugado';}
     if(j.categoria==='eliminado'){tc='tag-eliminado';tt='ELIM. -8H';nc='var(--rojo)';ic='';}
-    if(j.categoria==='reserva_jugo'){tc='tag-reserva';tt='RESERVA JUGO';nc='var(--amarillo)';ic='jugado';}
-    const sub2=j.eliminadoEn?' &middot; Elim: '+new Date(j.eliminadoEn).toLocaleString('es-CL',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}):'';
-    return`<div class="deudor-item ${ic}">
-      <div class="deudor-info">
-        <div class="deudor-name-row">
-          <span class="deudor-name" style="color:${nc}">${esc(j.nombre)}</span>
-          <span class="deudor-tag ${tc}">${tt}</span>
-        </div>
-        <div class="deudor-sub">${j.rut?'RUT: '+esc(j.rut):''}${sub2}</div>
-      </div></div>`;
+    if(j.categoria==='reserva_jugo'){tc='tag-reserva';tt='RESERVA JUG';nc='var(--amarillo)';ic='jugado';}
+    const sub2=j.eliminadoEn?' · Elim: '+new Date(j.eliminadoEn).toLocaleString('es-CL',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}):'';
+    return`<div class="deudor-item ${ic}"><div class="deudor-info"><div class="deudor-name-row"><span class="deudor-name" style="color:${nc}">${esc(j.nombre)}</span><span class="deudor-tag ${tc}">${tt}</span></div><div class="deudor-sub">${j.rut?'RUT: '+esc(j.rut):''}${sub2}</div></div></div>`;
   }).join('');
 }
 
+// ============================================================
+// CANCHA
+// ============================================================
 function renderCancha(){
   const lbl=['POR','DEF','DEF','DEF','DEF','MED','MED','MED','MED','DEL','DEL'];
+  // Fill main field positions (0-10 LIWEN, 11-21 rival/team2)
   for(let i=0;i<22;i++){
     const el=document.getElementById('pos-'+i);
     const ne=document.getElementById('posname-'+i);
     const se=document.getElementById('possub-'+i);
-    if(!el||!ne)continue;
+    if(!el||!ne) continue;
     if(i<11){
       const j=state.jugadores[i];
       if(j){const p=j.nombre.split(' ');ne.textContent=p[0].substring(0,7);se.textContent=p.length>1?p[p.length-1].substring(0,7):'';el.style.opacity='1';}
       else{ne.textContent=lbl[i];se.textContent='';el.style.opacity='0.2';}
-    }else{
+    } else {
       const k=i-11;
       const j2=state.partido.tipo==='interno'?state.jugadores[11+k]:null;
       if(j2){const p=j2.nombre.split(' ');ne.textContent=p[0].substring(0,7);se.textContent=p.length>1?p[p.length-1].substring(0,7):'';el.style.opacity='1';}
       else{ne.textContent=lbl[k];se.textContent='';el.style.opacity='0.15';}
     }
   }
+  // Bench sidebar
+  const bench=document.getElementById('benchList');
+  if(!bench) return;
+  if(state.reservas.length===0){
+    bench.innerHTML='<div style="font-size:.72rem;color:var(--texto-muted);text-align:center;padding:8px 0;">Sin reservas</div>';
+    return;
+  }
+  bench.innerHTML=state.reservas.map((r,i)=>`
+    <div class="bench-player ${i===0?'bench-next':''}">
+      <div class="bench-num">${i===0?'&#11014;':'R'+(i+1)}</div>
+      <div class="bench-name">${esc(r.nombre.split(' ')[0])}</div>
+    </div>`).join('');
 }
 
+// ============================================================
+// PROGRESS
+// ============================================================
 function renderProgress(){
   const max=cuposMax(),count=state.jugadores.length;
   const pct=max>0?Math.min((count/max)*100,100):0;
@@ -767,20 +1011,48 @@ function renderProgress(){
   document.getElementById('progressText').textContent=count+' / '+(state.partido.tipo?max:'—');
 }
 
+// ============================================================
+// ESTADISTICAS
+// ============================================================
 function guardarResultado(){
   state.resultado.local=document.getElementById('inputLocal').value;
   state.resultado.visita=document.getElementById('inputVisita').value;
-  saveState();renderStats();syncSheets(true);showToast('Resultado guardado');
+  // Archivar partido
+  archivarPartido();
+  saveState();renderAll();syncSheets(true);showToast('Resultado guardado y partido archivado');
 }
-function togglePago(id){
-  state.pagos[id]=state.pagos[id]==='pagado'?'pendiente':'pagado';
-  saveState();renderStats();
+
+function archivarPartido(){
+  const{partido,resultado,jugadores,eliminadosTarde,reservas,votos}=state;
+  if(!partido.fecha||!partido.hora)return;
+  // MVP de este partido
+  let mvpNombre='';
+  const votosArr=Object.values(votos||{});
+  if(votosArr.length>0){
+    const conteo={};
+    votosArr.forEach(v=>{conteo[v]=(conteo[v]||0)+1;});
+    mvpNombre=Object.entries(conteo).sort((a,b)=>b[1]-a[1])[0][0];
+  }
+  const entrada={
+    id:Date.now(),
+    fecha:partido.fecha,hora:partido.hora,lugar:partido.lugar||'',
+    tipo:partido.tipo,rivalNombre:partido.rivalNombre||'',
+    local:resultado.local,visita:resultado.visita,
+    jugadores:jugadores.map(j=>j.nombre),
+    mvp:mvpNombre,
+    timestamp:new Date().toISOString()
+  };
+  // No duplicar si ya existe este partido
+  const existe=state.historial.find(h=>h.fecha===partido.fecha&&h.hora===partido.hora);
+  if(existe){Object.assign(existe,entrada);}else{state.historial.unshift(entrada);}
+  // Resetear para nuevo partido
+  state.partido={tipo:'',rivalNombre:'',fecha:'',hora:'',lugar:'',cancelado:false,motivoCancelacion:''};
+  state.jugadores=[];state.reservas=[];state.eliminadosTarde=[];
+  state.resultado={local:'',visita:''};state.pagos={};state.votos={};state.votantes={};
 }
-function toggleJugo(id){
-  const r=state.reservas.find(x=>x.id===id);if(!r)return;
-  r.jugo=!r.jugo;saveState();renderStats();renderDeudores();syncSheets(true);
-  showToast(r.jugo?r.nombre+' marco como jugo':r.nombre+' desmarcado');
-}
+
+function togglePago(id){state.pagos[id]=state.pagos[id]==='pagado'?'pendiente':'pagado';saveState();renderStats();}
+function toggleJugo(id){const r=state.reservas.find(x=>x.id===id);if(!r)return;r.jugo=!r.jugo;saveState();renderStats();renderDeudores();syncSheets(true);showToast(r.jugo?r.nombre+' jugo':r.nombre+' desmarcado');}
 
 function renderStats(){
   const{local,visita}=state.resultado;
@@ -791,30 +1063,250 @@ function renderStats(){
   if(isAdmin){document.getElementById('inputLocal').value=local||'';document.getElementById('inputVisita').value=visita||'';}
   const todos=getDeudoresList();
   const list=document.getElementById('statsPayList');
-  if(todos.length===0){list.innerHTML='<div style="padding:1rem;color:var(--texto-muted);text-align:center;font-size:.85rem;">Sin jugadores registrados</div>';return;}
+  if(todos.length===0){list.innerHTML='<div style="padding:1rem;color:var(--texto-muted);text-align:center;font-size:.85rem;">Sin jugadores</div>';return;}
   list.innerHTML=todos.map((j,i)=>{
     const pago=state.pagos[j.id]||'pendiente';
     let tag='';
-    if(j.categoria==='titular')tag='<span class="deudor-tag tag-titular">TITULAR</span>';
+    if(j.categoria==='titular')tag='<span class="deudor-tag tag-titular">TIT</span>';
     if(j.categoria==='eliminado')tag='<span class="deudor-tag tag-eliminado">-8H</span>';
-    if(j.categoria==='reserva_jugo')tag='<span class="deudor-tag tag-reserva">RESERVA</span>';
-    return`<div class="stats-row">
-      <div class="stats-num">${i+1}</div>
-      <div style="display:flex;align-items:center;gap:5px;flex-wrap:wrap;"><span style="font-weight:600;">${esc(j.nombre)}</span>${tag}</div>
-      <div class="stats-rut">${esc(j.rut||'—')}</div>
-      <div><span class="pago-badge ${pago==='pagado'?'pago-ok':'pago-pending'} ${isAdmin?'pago-clickable':''}" ${isAdmin?'onclick="togglePago('+j.id+')"':''}>${pago==='pagado'?'Pagado':'Pendiente'}</span></div>
-      <div style="font-size:.72rem;color:var(--texto-muted);">${j.categoria==='eliminado'?'Elim.':j.categoria==='reserva_jugo'?'Res.':'Tit.'}</div>
-    </div>`;
+    if(j.categoria==='reserva_jugo')tag='<span class="deudor-tag tag-reserva">RES</span>';
+    return`<div class="stats-row"><div class="stats-num">${i+1}</div><div style="display:flex;align-items:center;gap:5px;flex-wrap:wrap;"><span style="font-weight:600;">${esc(j.nombre)}</span>${tag}</div><div class="stats-rut">${esc(j.rut||'—')}</div><div><span class="pago-badge ${pago==='pagado'?'pago-ok':'pago-pending'} ${isAdmin?'pago-clickable':''}" ${isAdmin?'onclick="togglePago('+j.id+')"':''}>${pago==='pagado'?'Pagado':'Pendiente'}</span></div><div style="font-size:.72rem;color:var(--texto-muted);">${j.categoria==='eliminado'?'Elim.':j.categoria==='reserva_jugo'?'Res.':'Tit.'}</div></div>`;
   }).join('');
   const rjl=document.getElementById('reservasJugaronList');
-  if(state.reservas.length===0){rjl.innerHTML='<div style="color:var(--texto-muted);font-size:.85rem;padding:8px 0;">Sin reservas registradas</div>';return;}
-  rjl.innerHTML=state.reservas.map(r=>`
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--gris-border);">
-      <div><span style="font-weight:600;font-size:.9rem;">${esc(r.nombre)}</span><span style="font-size:.75rem;color:var(--texto-muted);margin-left:6px;">${esc(r.rut||'')}</span></div>
-      <button class="jugo-btn ${r.jugo?'jugo-si':'jugo-no'}" onclick="toggleJugo(${r.id})">${r.jugo?'Jugo':'No jugo'}</button>
-    </div>`).join('');
+  if(state.reservas.length===0){rjl.innerHTML='<div style="color:var(--texto-muted);font-size:.85rem;padding:8px 0;">Sin reservas</div>';return;}
+  rjl.innerHTML=state.reservas.map(r=>`<div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--gris-border);"><div><span style="font-weight:600;font-size:.9rem;">${esc(r.nombre)}</span><span style="font-size:.75rem;color:var(--texto-muted);margin-left:6px;">${esc(r.rut||'')}</span></div><button class="jugo-btn ${r.jugo?'jugo-si':'jugo-no'}" onclick="toggleJugo(${r.id})">${r.jugo?'Jugo':'No jugo'}</button></div>`).join('');
 }
 
+// ============================================================
+// VOTACION MVP
+// ============================================================
+function verificarVotante(){
+  const rut=document.getElementById('votoRut').value.trim();
+  if(!rut){showToast('Ingresa tu RUT',true);return;}
+  // Verificar que sea jugador registrado
+  const esJugador=state.jugadores.some(j=>j.rut===rut)||state.reservas.some(r=>r.rut===rut)||state.eliminadosTarde.some(j=>j.rut===rut);
+  if(!esJugador){showToast('RUT no encontrado en la lista de jugadores',true);return;}
+  // Verificar que no haya votado
+  const pid=partidoId();
+  if(state.votantes[rut]===pid){document.getElementById('votoYaEmitido').style.display='block';document.getElementById('votoForm').style.display='none';return;}
+  votoRutVerificado=rut;
+  renderVoteGrid();
+  document.getElementById('votoJugadoresWrap').style.display='block';
+}
+function renderVoteGrid(){
+  const jugadores=[...state.jugadores,...state.reservas.filter(r=>r.jugo)];
+  document.getElementById('voteGrid').innerHTML=jugadores.map(j=>`
+    <div class="vote-card" id="vcard-${j.id}" onclick="seleccionarVoto(${j.id},'${esc(j.nombre)}')">
+      <div class="vote-name">${esc(j.nombre)}</div>
+      <div style="font-size:.72rem;color:var(--texto-muted);">${esc(j.rut||'')}</div>
+    </div>`).join('');
+}
+function seleccionarVoto(id,nombre){
+  votoSeleccionado=nombre;
+  document.querySelectorAll('.vote-card').forEach(c=>c.classList.remove('voted'));
+  const card=document.getElementById('vcard-'+id);if(card)card.classList.add('voted');
+}
+function cancelarVoto(){votoRutVerificado=null;votoSeleccionado=null;document.getElementById('votoJugadoresWrap').style.display='none';document.getElementById('votoRut').value='';}
+function emitirVoto(){
+  if(!votoSeleccionado){showToast('Selecciona un jugador',true);return;}
+  const pid=partidoId();
+  if(!state.votos[pid])state.votos[pid]={};
+  state.votos[pid][votoRutVerificado]=votoSeleccionado;
+  state.votantes[votoRutVerificado]=pid;
+  votoRutVerificado=null;votoSeleccionado=null;
+  document.getElementById('votoJugadoresWrap').style.display='none';
+  document.getElementById('votoYaEmitido').style.display='block';
+  document.getElementById('votoForm').style.display='none';
+  saveState();renderVotacion();showToast('Voto emitido!');syncSheets(true);
+}
+function resetearVotacion(){
+  const pid=partidoId();
+  state.votos[pid]={};
+  // Limpiar votantes de este partido
+  Object.keys(state.votantes).forEach(rut=>{if(state.votantes[rut]===pid)delete state.votantes[rut];});
+  saveState();renderVotacion();showToast('Votacion reiniciada');
+}
+function renderVotacion(){
+  const pid=partidoId();
+  const votosPartido=state.votos[pid]||{};
+  const conteo={};
+  Object.values(votosPartido).forEach(nombre=>{conteo[nombre]=(conteo[nombre]||0)+1;});
+  const total=Object.values(conteo).reduce((a,b)=>a+b,0);
+  const sorted=Object.entries(conteo).sort((a,b)=>b[1]-a[1]);
+  const maxVotos=sorted.length>0?sorted[0][1]:0;
+
+  // Ya vote?
+  const yaVote=votoRutVerificado||Object.keys(state.votantes).some(rut=>state.votantes[rut]===pid&&document.getElementById('votoRut')&&document.getElementById('votoRut').value.trim()===rut);
+  const rut=document.getElementById('votoRut')?document.getElementById('votoRut').value.trim():'';
+  if(rut&&state.votantes[rut]===pid){
+    document.getElementById('votoYaEmitido').style.display='block';
+    document.getElementById('votoForm').style.display='none';
+  }
+
+  const grid=document.getElementById('voteResultsGrid');
+  if(sorted.length===0){grid.innerHTML='<div style="color:var(--texto-muted);font-size:.85rem;">Sin votos aun</div>';return;}
+  grid.innerHTML=sorted.map(([nombre,votos])=>{
+    const pct=total>0?Math.round((votos/total)*100):0;
+    const isWinner=votos===maxVotos&&maxVotos>0;
+    return`<div class="vote-card ${isWinner?'winner':''}">
+      <div class="vote-name">${esc(nombre)}</div>
+      <div class="vote-count">${votos}</div>
+      <div class="vote-pct">${pct}% de votos</div>
+      <div class="vote-bar-wrap"><div class="vote-bar" style="width:${pct}%"></div></div>
+    </div>`;
+  }).join('');
+}
+
+// ============================================================
+// NIVELES Y EQUIPOS
+// ============================================================
+function renderNiveles(){
+  // Admin form
+  const adminList=document.getElementById('nivelesAdminList');
+  const todosJug=[...state.jugadores,...state.reservas.filter(r=>r.jugo)];
+  if(todosJug.length===0){adminList.innerHTML='<div style="color:var(--texto-muted);font-size:.85rem;">Sin jugadores inscritos</div>';}
+  else{
+    adminList.innerHTML=todosJug.map(j=>{
+      const niv=state.niveles[j.nombre]||50;
+      return`<div class="nivel-row">
+        <div class="nivel-nombre">${esc(j.nombre)}</div>
+        <div class="nivel-val" id="nivval-${j.id}">${niv}</div>
+        <div class="nivel-slider-wrap"><input type="range" class="nivel-slider" min="0" max="100" value="${niv}" id="nivslider-${j.id}" oninput="document.getElementById('nivval-${j.id}').textContent=this.value"></div>
+        <div>${nivelBadge(niv)}</div>
+      </div>`;
+    }).join('');
+  }
+  // Vista publica
+  const list=document.getElementById('nivelesList');
+  const jugadoresConNivel=Object.entries(state.niveles).filter(([,n])=>n>0).sort((a,b)=>b[1]-a[1]);
+  if(jugadoresConNivel.length===0){list.innerHTML='<div class="empty-state"><div class="empty-icon">&#9878;</div><p>Sin niveles asignados aun</p></div>';}
+  else{list.innerHTML=jugadoresConNivel.map(([nombre,niv],i)=>`
+    <div class="nivel-row">
+      <div class="nivel-nombre">${i+1}. ${esc(nombre)}</div>
+      <div class="nivel-val" style="color:var(--verde)">${niv}</div>
+      <div class="nivel-slider-wrap"><div style="background:var(--gris-border);border-radius:3px;height:6px;overflow:hidden;"><div style="width:${niv}%;height:100%;background:linear-gradient(90deg,var(--verde-dark),var(--verde));border-radius:3px;"></div></div></div>
+      <div>${nivelBadge(niv)}</div>
+    </div>`).join('');}
+  // Descripcion equipos
+  const desc=document.getElementById('equiposDesc');
+  if(desc)desc.textContent=state.partido.tipo==='interno'?'Propone 2 equipos de 11 balanceados para el partido interno.':'Propone el equipo de 11 jugadores mas equilibrado para el partido externo.';
+}
+function nivelBadge(n){
+  n=parseInt(n);
+  if(n>=80)return'<span class="nivel-badge nivel-elite">ELITE</span>';
+  if(n>=60)return'<span class="nivel-badge nivel-bueno">BUENO</span>';
+  if(n>=40)return'<span class="nivel-badge nivel-medio">MEDIO</span>';
+  return'<span class="nivel-badge nivel-bajo">BASICO</span>';
+}
+function guardarNiveles(){
+  const todosJug=[...state.jugadores,...state.reservas.filter(r=>r.jugo)];
+  todosJug.forEach(j=>{
+    const slider=document.getElementById('nivslider-'+j.id);
+    if(slider)state.niveles[j.nombre]=parseInt(slider.value);
+  });
+  saveState();renderNiveles();showToast('Niveles guardados');syncSheets(true);
+}
+function generarEquipos(){
+  const jugadores=state.jugadores.map(j=>({nombre:j.nombre,nivel:state.niveles[j.nombre]||50}));
+  if(jugadores.length<2){showToast('Se necesitan mas jugadores',true);return;}
+  const result=document.getElementById('equiposResult');
+  if(state.partido.tipo==='interno'&&jugadores.length>=22){
+    // Partido interno: dividir en 2 equipos de 11
+    const equipos=dividirEquilibrado(jugadores,11);
+    const avgA=Math.round(equipos[0].reduce((s,j)=>s+j.nivel,0)/equipos[0].length);
+    const avgB=Math.round(equipos[1].reduce((s,j)=>s+j.nivel,0)/equipos[1].length);
+    result.innerHTML=`
+      <div style="font-size:.75rem;color:var(--texto-muted);text-align:center;margin-bottom:.5rem;">Diferencia promedio: ${Math.abs(avgA-avgB)} puntos</div>
+      <div class="balance-bar"><div class="balance-fill-a" style="width:${Math.round(avgA/(avgA+avgB)*100)}%"></div><div class="balance-fill-b" style="width:${Math.round(avgB/(avgA+avgB)*100)}%"></div></div>
+      <div class="equipos-grid">
+        ${renderEquipoCard(equipos[0],'EQUIPO VERDE','var(--verde)',avgA)}
+        ${renderEquipoCard(equipos[1],'EQUIPO ROJO','var(--rojo)',avgB)}
+      </div>`;
+  }else{
+    // Partido externo o menos de 22: proponer el mejor equipo de los disponibles
+    const sorted=[...jugadores].sort((a,b)=>b.nivel-a.nivel);
+    const once=sorted.slice(0,Math.min(11,sorted.length));
+    const avg=Math.round(once.reduce((s,j)=>s+j.nivel,0)/once.length);
+    result.innerHTML=`<div class="equipo-card">${renderEquipoCard(once,'ONCE IDEAL','var(--verde)',avg)}</div>`;
+  }
+}
+function dividirEquilibrado(jugadores,n){
+  const sorted=[...jugadores].sort((a,b)=>b.nivel-a.nivel);
+  const A=[],B=[];
+  sorted.forEach((j,i)=>{
+    const sumA=A.reduce((s,x)=>s+x.nivel,0);
+    const sumB=B.reduce((s,x)=>s+x.nivel,0);
+    if(A.length<n&&(B.length>=n||sumA<=sumB))A.push(j);else B.push(j);
+  });
+  return[A,B];
+}
+function renderEquipoCard(jugadores,titulo,color,avg){
+  return`<div class="equipo-card">
+    <div class="equipo-card-title" style="color:${color}">${titulo}<span class="equipo-avg">Prom: ${avg}</span></div>
+    ${jugadores.map(j=>`<div class="equipo-player-row"><span>${esc(j.nombre)}</span><span class="equipo-player-nivel">${j.nivel}</span></div>`).join('')}
+  </div>`;
+}
+
+// ============================================================
+// HISTORIAL
+// ============================================================
+function renderHistorial(){
+  // Ranking MVP
+  const mvpConteo={};
+  state.historial.forEach(h=>{if(h.mvp)mvpConteo[h.mvp]=(mvpConteo[h.mvp]||0)+1;});
+  const mvpSorted=Object.entries(mvpConteo).sort((a,b)=>b[1]-a[1]);
+  const rankingEl=document.getElementById('rankingMvp');
+  if(mvpSorted.length===0){rankingEl.innerHTML='<div style="color:var(--texto-muted);font-size:.85rem;padding:8px 0;">Sin datos aun</div>';}
+  else{rankingEl.innerHTML=mvpSorted.slice(0,10).map(([nombre,count],i)=>{
+    const posClass=i===0?'gold':i===1?'silver':i===2?'bronze':'';
+    return`<div class="ranking-row">
+      <div class="ranking-pos ${posClass}">${i+1}</div>
+      <div class="ranking-info"><div class="ranking-name">${esc(nombre)}</div><div class="ranking-stars">${'⭐'.repeat(Math.min(count,5))}</div></div>
+      <div class="ranking-count">${count}</div>
+    </div>`;
+  }).join('');}
+
+  // Stats globales
+  const totalPartidos=state.historial.length;
+  const wins=state.historial.filter(h=>parseInt(h.local||0)>parseInt(h.visita||0)).length;
+  const draws=state.historial.filter(h=>parseInt(h.local||0)===parseInt(h.visita||0)&&h.local!=='').length;
+  const losses=state.historial.filter(h=>parseInt(h.local||0)<parseInt(h.visita||0)).length;
+  const golesF=state.historial.reduce((s,h)=>s+parseInt(h.local||0),0);
+  const golesC=state.historial.reduce((s,h)=>s+parseInt(h.visita||0),0);
+  document.getElementById('statsGlobales').innerHTML=`
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+      <div style="background:var(--gris-mid);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:.65rem;text-transform:uppercase;color:var(--texto-muted);">Partidos</div><div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--blanco);">${totalPartidos}</div></div>
+      <div style="background:var(--gris-mid);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:.65rem;text-transform:uppercase;color:var(--texto-muted);">W/D/L</div><div style="font-family:'Bebas Neue',sans-serif;font-size:1.2rem;"><span style="color:var(--verde)">${wins}</span>/<span style="color:var(--amarillo)">${draws}</span>/<span style="color:var(--rojo)">${losses}</span></div></div>
+      <div style="background:var(--gris-mid);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:.65rem;text-transform:uppercase;color:var(--texto-muted);">Goles a favor</div><div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--verde);">${golesF}</div></div>
+      <div style="background:var(--gris-mid);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:.65rem;text-transform:uppercase;color:var(--texto-muted);">Goles en contra</div><div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--rojo);">${golesC}</div></div>
+    </div>`;
+
+  // Lista historial
+  const hlist=document.getElementById('historialList');
+  if(state.historial.length===0){hlist.innerHTML='<div class="empty-state"><div class="empty-icon">&#128218;</div><p>Sin partidos archivados aun</p></div>';return;}
+  hlist.innerHTML=state.historial.map(h=>{
+    const local=parseInt(h.local||0),visita=parseInt(h.visita||0);
+    let resClass='draw';
+    if(h.local!==''&&h.visita!==''){if(local>visita)resClass='win';else if(local<visita)resClass='lose';}
+    const rival=h.tipo==='interno'?'LIWEN FC':(h.rivalNombre||'Rival');
+    const fechaStr=h.fecha?new Date(h.fecha+'T12:00:00').toLocaleDateString('es-CL',{weekday:'short',day:'numeric',month:'long',year:'numeric'}):'';
+    return`<div class="historial-card">
+      <div class="historial-header">
+        <div>
+          <div class="historial-matchup">LIWEN FC vs ${esc(rival)}</div>
+          <div class="historial-meta">${fechaStr}${h.hora?' &middot; '+h.hora:''} ${h.lugar?'&middot; '+esc(h.lugar):''}</div>
+        </div>
+        <div class="historial-score"><span class="${resClass}">${h.local!==''?h.local:'-'}</span> - <span class="${resClass}">${h.visita!==''?h.visita:'-'}</span></div>
+      </div>
+      ${h.mvp?`<div class="historial-mvp"><span class="mvp-star">&#11088;</span><strong>MVP:</strong> ${esc(h.mvp)}</div>`:''}
+      <div style="font-size:.75rem;color:var(--texto-muted);margin-top:6px;">${h.jugadores&&h.jugadores.length?h.jugadores.length+' jugadores':''}</div>
+    </div>`;
+  }).join('');
+}
+
+// ============================================================
+// SHEETS
+// ============================================================
 function saveSheetsUrl(){state.sheetsUrl=document.getElementById('sheetsUrl').value.trim();saveState();updateSheetsStatus();}
 function updateSheetsStatus(){
   const d=document.getElementById('sheetsDot'),s=document.getElementById('sheetsStatus');
@@ -836,13 +1328,16 @@ async function syncSheets(silent=false){
 }
 function toggleSetup(){document.getElementById('setupPanel').classList.toggle('open');}
 
+// ============================================================
+// RENDER ALL
+// ============================================================
 function renderAll(){
   renderPartidoBanner();renderProgress();renderJugadores();
-  renderReservas();renderDeudores();renderCancha();renderStats();updateSheetsStatus();
+  renderReservas();renderDeudores();renderCancha();renderStats();
+  renderVotacion();renderNiveles();renderHistorial();updateSheetsStatus();
 }
 function pad(n){return String(n).padStart(2,'0');}
 function esc(s){if(!s)return'';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-
 init();
 </script>
 </body>
